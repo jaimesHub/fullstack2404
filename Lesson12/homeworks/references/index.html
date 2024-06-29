@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT1</title>
+</head>
+<body>
+    <img id="img" src="https://sheis.vn/wp-content/uploads/2022/07/dia-diem-chup-anh-dep-o-hai-phong-12.jpg" alt="anh nguoi mau" width="100px" height="100px">
+    
+    <div style="margin-top: 12px;">
+        <div>
+            <label>URL</label>
+            <input id="url" type="text" placeholder="Nhập URL của ảnh">
+            
+        </div>
+        
+        <div>
+            <label>Chiều rộng (px)</label>
+            <input type="text" id="iwidth" placeholder="Nhập độ rộng">
+        </div>
+        
+        <div>
+            <label>Chiều dài (px)</label>
+            <input type="text" id="iheight" placeholder="Nhập độ dài">
+        </div>
+
+    </div>
+    
+    
+    
+    <script>
+        const $url = document.getElementById("url");
+        const $image = document.getElementById("img");
+        // c1: bỏ focus thì function được gọi
+        // $url.onchange = function() {
+        //     const value = $url.value;
+        //     console.log("changed...: ", value);
+        // }
+
+        // c2: nhập realtime
+        $url.oninput = function() {
+            const value = $url.value;
+            console.log("changed...: ", value);
+            $image.src = value;
+        }
+
+        const width = document.getElementById("iwidth");
+        const height = document.getElementById("iheight");
+
+        // $image.setAttribute("width", `${width}px`);
+        // $image.setAttribute("height", `${height}px`);
+
+        width.onchange = function() {
+            const value = width.value;
+            console.log(value);
+            $image.style.width = value + "px";
+        }
+
+        height.onchange = function() {
+            const value = height.value;
+            console.log(value);
+            $image.style.height = value + "px";
+        }
+    </script>
+</body>
+</html>

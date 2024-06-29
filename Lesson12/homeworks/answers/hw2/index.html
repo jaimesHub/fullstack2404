@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 2</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-add">
+            <input id="box-input" type="text" placeholder="Nhập nội dung việc mới">
+            <button id="create-btn">Tạo công việc</button>
+        </div>
+
+        <div class="form-output">
+            <h1>Danh sách công việc cần làm</h1>
+            <ul id="form-output-todo-list">
+                <li>Đi chơi</li>
+                <li>Làm bài tập</li>
+                <li>Giặt quần áo</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // get list of to-do tasks node object
+        const todoList = document.getElementById("form-output-todo-list");
+
+        // get input element object from box-input
+        const boxInput = document.getElementById("box-input");
+
+        // get create-btn node object
+        const createBtn = document.getElementById("create-btn");
+
+        createBtn.onclick = function() {
+            // adding input box to to do list
+            const newLiElement = document.createElement("li");
+
+            // then add value retrieved from boxInput to new li element
+            newLiElement.innerText = boxInput.value;
+
+            // pushing this li element to todoList nodelist object
+            todoList.appendChild(newLiElement);
+
+            // reset input box content to empty string
+            boxInput.value = "";
+        }
+    </script>
+</body>
+</html>

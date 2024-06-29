@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 4</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-13/css/all.min.css">
+    <style>
+        .container {
+            /* padding: 15px; */
+            padding-left: 15px;
+            padding-right: 15px;
+            background-color: #FFF2CC;
+            border: 1px solid #E6CE85;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .circle {
+            border-radius: 50%;
+            border: 1px solid #92BB74;
+            background-color: #D5E8D4;
+            width: 35px;
+            height: 35px;;
+        }
+
+        .component-2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .component-2-item {
+            margin: 5px 20px;
+            text-align: center;
+        }
+
+        .icon-description {
+            padding-top: 10px;
+        }
+
+        .component-3 {
+            display: flex;
+            align-items: center;
+        }
+
+        .component-3-item {
+            margin-right: 15px;
+        }
+
+        .component-3-item:first-child {
+            margin-right: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="circle component-1"></div>
+
+        <div class="component-2">
+            <div class="component-2-item">
+                <div class="icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="icon-description">Home</div>
+            </div>
+
+            <div class="component-2-item">
+                <div class="icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="icon-description">Friends</div>
+            </div>
+
+            <div class="component-2-item">
+                <div class="icon">
+                    <i class="fas fa-map-marker"></i>
+                </div>
+                <div class="icon-description">Market</div>
+            </div>
+        </div>
+
+        <div class="component-3">
+            <div class="component-3-item">
+                <i class="fas fa-bell fa-lg"></i>
+            </div>
+            <div class="circle component-3-item"></div>
+            <div class="component-3-item">Your name</div>
+        </div>
+    </div>
+</body>
+</html>

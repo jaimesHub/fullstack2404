@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 4</title>
+    <style>
+        .container {
+            width: 674px;
+            border: 2px solid #6695d7;
+            background-color: #DAE8FC;
+            padding: 10px;
+            position: relative;
+        }
+
+        .box {
+            width: 222px;
+            height: 90px;
+            background-color: #FFF2CC;
+            border: 1px solid #f5d882;
+        }
+
+        .hidden-box-item {
+            width: 250px;
+            height: 100px;
+            background-color: #F5F5F5;
+            border: 1px solid #BFBFBF;
+        }
+
+        #hidden-items {
+            position: absolute;
+            top: 120px;
+            left: 235px;
+            opacity: 0;
+        }
+
+        #box-2 {
+            position: absolute;
+            top: 10px;
+            left: 235px;
+        }
+
+        #box-3 {
+            position: absolute;
+            top: 10px;
+            left: 460px;
+        }
+
+        #box-2:hover ~ #hidden-items {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="box-1">Home</div>
+        <div id="box-2" class="box">Users</div>
+        <div class="box" id="box-3">Products</div>
+        <div id="hidden-items" class="hidden-box">
+            <div class="hidden-box-item" id="item-1">Customer</div>
+            <div class="hidden-box-item" id="item-2">Admins</div>
+            <div class="hidden-box-item" id="item-3">VIP</div>
+            <div class="hidden-box-item" id="item-4">My Staffs</div>
+        </div>
+    </div>
+</body>
+</html>

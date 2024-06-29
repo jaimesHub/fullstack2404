@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bug Tracker</h1>
+
+    <p>Report a new bug.</p>
+
+    <div>
+        <label for="title_bug">Bug Title</label><br>
+        <input type="text" name="title" id="title_bug" required>
+    </div>
+
+    <div>
+        <label for="issue_desc">Issue Description</label><br>
+        <textarea name="issue-description" id="issue_desc" cols="30" rows="10" required></textarea>
+    </div>
+
+    <div>
+        <label for="os">Operating System</label>
+        <select name="operating-system" id="os" required>
+            <option value="windows_7">Windows 7</option>
+            <option value="windows_8">Windows 8</option>
+            <option value="linux">Linux</option>
+            <option value="macos">MacOS</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="browser">Browser</label>
+        <select name="browser" id="browser" required>
+            <option value="Internet Explorer">Internet Explorer</option>
+            <option value="Firefox">Firefox</option>
+            <option value="Chrome">Chrome</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="assignee">Assigned To</label>
+        <select name="assignee" id="assignee" required>
+            <option value="QA Tester 1">QA Tester 1</option>
+            <option value="QA Tester 2">QA Tester 2</option>
+            <option value="QA Tester 3">QA Tester 3</option>
+        </select>
+    </div>
+
+    <div>
+        <p>Priority</p>
+        <input type="radio" name="Priority" id="low" value="Low">
+        <label for="low">Low</label>
+        <br>
+        <input type="radio" name="Priority" id="medium" value="Medium">
+        <label for="medium">Medium</label>
+        <br>
+        <input type="radio" name="Priority" id="high" value="High">
+        <label for="high">High</label>
+    </div>
+
+    <div>
+        <label for="screenshot_1">Screenshot 1</label><br>
+        <input type="file" name="file-1" id="screenshot_1">
+    </div>
+
+    <div>
+        <label for="screenshot_2">Screenshot 2</label><br>
+        <input type="file" name="file-2" id="screenshot_2">
+    </div>
+
+    <div>
+        <label for="status">Status</label><br>
+        <select name="status" id="status" required>
+            <option value="Not Start">Not Start</option>
+            <option value="In Queue">In Queue</option>
+            <option value="Done">Done</option>
+        </select>
+    </div>
+
+    <button>Submit</button>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 10px;
+            background-color: #FFF2CC;
+            border: 1px solid #E2C878;
+            margin: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu {
+            display: flex;
+            margin-right: 10px;
+        }
+
+        .box {
+            padding: 20px 50px;
+            border: 1px solid black;
+            font-weight: 600;
+        }
+
+        .menu-box {
+            background-color: #FCCACA;
+            border-right: none;
+        }
+
+        .menu-box:last-child {
+            border-right: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box logo" style="background-color: #CDEB8B;">Logo</div>
+        <div class="menu">
+            <div class="box menu-box about">About</div>
+            <div class="box menu-box home">Home</div>
+            <div class="box menu-box contact">Contact</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+    <style>
+        .container {
+            width: 98.5%;
+            border: 2px solid #E2C878;
+            background-color: #FFF2CC;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .box {
+            width: 80px;
+            height: 40px;
+            border: 2px solid black;
+        }
+
+        .logo {
+            background-color: green;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .about, .home, .contact{
+            background-color: pink;
+        }
+
+        .about {
+            border-right: none;
+        }
+        .contact {
+            border-left: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box logo">Logo</div>
+        <div class="menu">
+            <div class="box about">About</div>
+            <div class="box home">Home</div>
+            <div class="box contact">Contact</div>
+        </div>
+    </div>
+</body>
+</html>

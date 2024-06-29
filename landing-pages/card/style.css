@@ -1,0 +1,188 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.card {
+    background-color: #FFD38A;
+    width: 476.5px;
+    height: 296px;
+    border-radius: 16px;
+    margin: 10% auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-avatar {
+    background-color: #E2E2E2;
+    width: 50%;
+    height: 100%;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-avatar-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.card-avatar-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+}
+
+.card-avatar-image-item-status {
+    width: 56px;
+    height: 32px;
+    border-radius: 16px 0px;
+    background-color: #69A042;
+    padding: 6px 8px 6px 8px;
+    /* font-family: ; */
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 20px;
+    color: #FFFFFF;
+    position: absolute;
+    top: 169px;
+    left: 150px;
+}
+
+.card-avatar-call {
+    display: flex;
+    padding: 8px;
+    margin-top: 16px;
+}
+
+.card-avatar-call-chat, 
+.card-avatar-call-micro, 
+.card-avatar-call-video {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    background-color: #000000;
+    margin-right: 16px;
+    position: relative;
+}
+
+.card-avatar-call-chat i,
+.card-avatar-call-micro i,
+.card-avatar-call-video i {
+    width: 20px;
+    height: 20px;
+    color: #FFFFFF;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+
+.card-information {
+    background-color: #FFD38A;
+    width: 50%;
+    height: 100%;
+    border-radius: 16px;
+    padding: 32px 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-information-name {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-information-name-text {
+    /* font-family: ; */
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 8px;
+}
+
+.card-information-name-more-detail {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-information-name-more-detail-job {
+    /* font-family: ; */
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.card-information-name-more-detail-location {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.card-information-name-more-detail-location-icon {
+    margin-right: 8px;
+}
+
+.card-information-name-more-detail-location-text {
+    /* font-family: ; */
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.card-information-name-more-detail-about {
+    display: flex;
+    align-items: baseline;
+}
+
+.card-information-name-more-detail-about-title {
+    /* font-family: ; */
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    margin-right: 8px;
+}
+
+.card-information-name-more-detail-about-languages {
+    /* font-family: ; */
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.card-information-social {
+    padding: 8px;
+    display: flex;
+}
+
+.card-information-social-circle {
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+/* .card-information-social-circle .fa-telegram-plane {
+    color: white;
+    background-color: #000000;
+    border-radius: 50%;
+} */
+
+
+
+
+
+
+
+
+

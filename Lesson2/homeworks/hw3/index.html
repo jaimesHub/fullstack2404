@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cheerleader Registration</h1>
+
+    <p>Register your kid for the cheerleader squad.</p>
+
+    <div>
+        <label for="first_name">Child's first name</label>
+        <input type="text" id="first_name" required>
+        <label for="last_name">Child's lastname name</label>
+        <input type="text" id="last_name" required>
+    </div>
+
+    <div>
+        <p>Age group</p>
+        <input type="radio" id="six_to_eight" value="6-8 years old" name="age_group">
+        <label for="six_to_eight">6-8 years old</label>
+        <br>
+        <input type="radio" id="nine_to_twelve" value="9-12 years old" name="age_group">
+        <label for="nine_to_twelve">9-12 years old</label>
+        <br>
+        <input type="radio" id="thirdteen_to_fiffteen" value="13-15 years old" name="age_group">
+        <label for="thirdteen_to_fiffteen">13-15 years old</label>
+    </div>
+
+    <div>
+        <p>Gender</p>
+        <input type="radio" name="gender_group" id="boy">
+        <label for="boy">Boy</label>
+        <br>
+        <input type="radio" name="gender_group" id="girl">
+        <label for="girl">Girl</label>
+    </div>
+
+    <div>
+        <p>Previous dance and gymnastics experience</p>
+        <input type="radio" name="activites_group" id="select_yes">
+        <label for="select_yes">Yes</label>
+        <br>
+        <input type="radio" name="activites_group" id="select_no">
+        <label for="select_no">No</label>
+    </div>
+
+    <h3>Guardian Information</h3>
+
+    <p>Please enter parent or legal guardian information here</p>
+
+    <div>
+        <label for="first_name">First name</label>
+        <input type="text" id="first_name" required>
+        <label for="last_name">Last name</label>
+        <input type="text" id="last_name" required>
+    </div>
+
+    <div>
+        <label for="phone">Phone</label>
+        <input type="text" id="phone">
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input type="text" id="email">
+    </div>
+
+    <div>
+        <label for="address">Address</label><br>
+        <textarea name="Address" id="address" cols="50" rows="5"></textarea>
+    </div>
+
+    <button>Submit</button>
+</body>
+</html>

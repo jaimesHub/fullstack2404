@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 1</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            margin: 50px 0;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-form">
+            <div class="input-form-url">
+                <label for="">URL</label>
+                <input id="input-url" type="text" placeholder="Nhập URL ảnh">
+            </div>
+            <div class="input-form-width">
+                <label for="">Chiều rộng (px)</label>
+                <input id="input-width" type="text" placeholder="Nhập chiều rộng ảnh">
+            </div>
+            <div class="input-form-height">
+                <label for="">Chiều cao (px)</label>
+                <input id="input-height" type="text" placeholder="Nhập chiều cao ảnh">
+            </div>
+            <div class="input-form-border-radius">
+                <label for="">Bo góc (px)</label>
+                <input id="input-border-radius" type="text" placeholder="Nhập bo góc ảnh">
+            </div>
+            <div class="input-form-alt">
+                <label for="">Alt</label>
+                <input id="input-alt" type="text" placeholder="Nhập alt của ảnh">
+            </div>
+        </div>
+
+        <div class="result-image">
+            <img id="change-target" src="https://cdn.career.edu.vn/wp-content/uploads/2024/04/meme-meo-xin-chao-1.jpg" alt="oat do heo meme" style="width: 300px;height: 300px;margin-left: 10px;">
+        </div>
+    </div>
+
+    <script>
+        // select an element by id = "change-target"
+        const $changeTarget = document.getElementById("change-target"); // element needs to change when inputs changed
+        const currentImageSrc = $changeTarget.src;
+
+        // finding url input
+        const $inputUrl = document.getElementById("input-url"); // this value will be changed to apply $changeTarget
+
+        // onchange occurs when the element loses focus, after the content has been changed
+        $inputUrl.onchange = function() {
+            if ($inputUrl.value !== "") {
+                $changeTarget.src = $inputUrl.value;
+                console.log("new value is set: ", $inputUrl.value);
+            } else {
+                $changeTarget.src = currentImageSrc;
+                console.log("set default: ", currentImageSrc);
+            }
+        }
+
+        // find id input-width element
+        const $inputWidth = document.getElementById("input-width"); // this value will be changed to apply $changeTarget
+        const currentWidth = $changeTarget.style.width; // 300px
+
+        // the oninput event occurs immediately after the value of an element has changed
+        $inputWidth.oninput = function() {
+            if (!$inputWidth.value) {
+                $changeTarget.style.width = currentWidth;
+                console.log("set default weight: ", currentWidth);
+            } else {
+                $changeTarget.style.width = $inputWidth.value + "px";
+                console.log("set new width: ", $changeTarget.style.width);
+            }
+        }
+
+        // find id input-height element
+        const $inputHeight = document.getElementById("input-height"); // this value will be changed to apply $changeTarget
+        const currentHeight = $changeTarget.style.height; // 300px;
+
+        // the oninput event occurs immediately after the value of an element has changed
+        $inputHeight.onchange = function() {
+            if (!$inputHeight.value) {
+                $changeTarget.style.height = currentHeight;
+                console.log("set default height: ", currentHeight);
+            } else {
+                $changeTarget.style.height = $inputHeight.value + "px";
+                console.log("set new height: ", $changeTarget.style.height);
+            }
+        }
+
+        // find id input-border-radius element
+        const $inputBorderRadius = document.querySelector("#input-border-radius");
+        const defaultBorderRadius = $changeTarget.style.borderRadius;
+
+        $inputBorderRadius.onchange = function() {
+            if(!$inputBorderRadius.value) {
+                $changeTarget.style.borderRadius = defaultBorderRadius;
+                console.log("Set default border-radius: ", $changeTarget.style.borderRadius);
+            } else {
+                $changeTarget.style.borderRadius = $inputBorderRadius.value + "px";
+                console.log("Set new border-radius: ", $changeTarget.style.borderRadius);
+            }
+        }
+
+        // find id input-alt element
+        const $inputAlt = document.querySelector("#input-alt");
+        const currentAlt = $changeTarget.alt;
+        console.log("currentAlt: ", currentAlt);
+
+        $inputAlt.oninput = function() {
+            $changeTarget.alt = $inputAlt.value;
+        }
+        
+    </script>
+</body>
+</html>

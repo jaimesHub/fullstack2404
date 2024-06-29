@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 11</title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            height: 770px;
+            background-color: #C4C4C4;
+            padding-top: 50px;
+        }
+
+        .selection {
+            padding: 20px;
+            margin: 5px;
+            background-color: #E4E4E4;
+            margin-bottom: 10px;
+        }
+
+        .selection:hover {
+            background-color: #8A8989;
+        }
+
+        .right-side {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-left: 10px;
+        }
+
+        .header {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-right: 25px;
+            background-color: #C4C4C4;
+            text-align: end;
+            font-size: x-large;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 15px;
+        }
+
+        .rating {
+            display: flex;
+            justify-content: center;
+            padding: 8px 20px;
+            background-color: #C4C4C4;
+        }
+
+        .rating-content {
+            margin-right: 20px;
+        }
+
+        .box-items {
+            display: flex;
+            justify-content: space-between;
+            width: 120px;
+        }
+
+        .box-item {
+            padding: 10px;
+            background-color: #D7DA4D;
+        }
+
+        .rated {
+            border: 1px solid black;
+            margin-left: 50px;
+            padding-left: 5px;
+            padding-right: 5px;
+            color: #E7E7E7;
+        }
+
+        .metrics {
+            margin-top: 35px;
+        }
+
+        .metrics-title, .quick-actions {
+            margin-bottom: 10px;
+            font-size: x-large;
+        }
+
+        .metrics-items {
+            display: flex;
+            /* justify-content: space-between; */
+        }
+
+        .metrics-item {
+            padding: 50px 60px;
+            background-color: #C4C4C4;
+            margin-right: 84px;
+        }
+
+        .quick-actions {
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .quick-actions-title {
+            margin-bottom: 20px;
+        }
+
+        .quick-actions-items-content {
+            display: flex;
+        }
+
+        .quick-actions-item {
+            width: 240px;
+            height: 120px;
+            background-color: #C4C4C4;
+            margin-right: 48px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-top: 40px;
+            padding-bottom: 10px;
+            font-size: medium;
+        }
+
+        .quick-actions-item-btn {
+            background-color: #4D89E3;
+            border: 1px solid #3E9CC4;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-right: 60px;
+            margin-left: 60px;
+        }
+
+        .getting-started {
+            align-items: center;
+            background-color: #C4C4C4;
+            padding: 5px;
+            display: flex;
+            justify-content: space-around;
+            width: 540px;
+            margin: auto;
+        }
+
+        .getting-started-right-side {
+            padding: 60px;
+            background-color: #FEF5F5;
+        }
+
+        .getting-started-left-side {
+            padding-left: 40px;
+            margin-bottom: 20px;
+        }
+
+        .getting-started-left-side-content {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 40px;
+            
+        }
+
+        .getting-started-left-side-content-title {
+            font-size: x-large;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .getting-started-left-side-content-description {
+            font-size: small;
+        }
+
+        .getting-started-left-side-btn {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center;
+            width: 180px;
+            background-color: #FFFAFA;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <div class="selection">Dashboard</div>
+            <div class="selection">Switcher</div>
+            <div class="selection">Checkout</div>
+            <div class="selection">Customization</div>
+            <div class="selection">Pricing</div>
+            <div class="selection">Documents</div>
+        </div>
+        <div class="right-side">
+            <div class="header">Admin</div>
+            <div class="main">
+                <div class="content">
+                    <div class="rating">
+                        <div class="rating-content">How would you rate our app?</div>
+                        <div class="box-items">
+                            <div class="box-item"></div>
+                            <div class="box-item"></div>
+                            <div class="box-item"></div>
+                            <div class="box-item"></div>
+                            <div class="box-item"></div>
+                        </div>
+                        <div class="rated">Not rated</div>
+                    </div>
+                </div>
+                <div class="metrics">
+                    <div class="metrics-title">Metrics</div>
+                    <div class="metrics-items">
+                        <div class="metrics-item">Total pageview by country</div>
+                        <div class="metrics-item">Total pageview use local currency</div>
+                        <div class="metrics-item">Order generate from Transcy</div>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <div class="quick-actions-title">Quick Actions</div>
+                    <div class="quick-actions-items">
+                        <div class="quick-actions-items-content">
+                            <div class="quick-actions-item">
+                                <div class="quick-actions-item-title">Documents</div>
+                                <div class="quick-actions-item-btn">Access now</div>
+                            </div>
+                            <div class="quick-actions-item">
+                                <div class="quick-actions-item-title">Documents</div>
+                                <div class="quick-actions-item-btn">Access now</div>
+                            </div>
+                            <div class="quick-actions-item">
+                                <div class="quick-actions-item-title">Documents</div>
+                                <div class="quick-actions-item-btn">Access now</div>
+                            </div>
+                            <div class="quick-actions-item">
+                                <div class="quick-actions-item-title">Documents</div>
+                                <div class="quick-actions-item-btn">Access now</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="getting-started">
+                    <div class="getting-started-right-side">Image</div>
+                    <div class="getting-started-left-side">
+                        <div class="getting-started-left-side-content">
+                            <div class="getting-started-left-side-content-title">Getting Started</div>
+                            <div class="getting-started-left-side-content-description">
+                                Discover how LAI can power up your store with our services.
+                            </div>
+                        </div>
+                        <div class="getting-started-left-side-btn">Learn about getting started</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7</title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .left-sidebar {
+            padding: 280px 1%;
+            border: 1px solid #e5a4a0;
+            background-color: #BF625F;
+            font-size: 30px;
+        }
+
+        .right-sidebar {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-left: 10px;
+        }
+
+        .header, .footer {
+            padding: 20px 600px;
+            border: 1px solid #D9BC61;
+            background-color: #FFF2CC;
+            font-size: 30px;
+        }
+
+        .content {
+            padding-top: 280px;
+            padding-bottom: 280px;
+            border: 1px solid #82B366;
+            background-color: #D5E8D4;
+            font-size: 30px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-sidebar">Left sidebar</div>
+        <div class="right-sidebar">
+            <div class="header">Header</div>
+            <div class="content">Content</div>
+            <div class="footer">Footer</div>
+        </div>
+    </div>
+</body>
+</html>

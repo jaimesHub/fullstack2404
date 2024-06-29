@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 8</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            height: 100vh;
+            margin: 10px 5px
+        }
+
+        .header {
+            padding-top: 20px;
+            padding-bottom: 24px;
+            border: 1px solid #D9BC61;
+            background-color: #FFF2CC;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .main {
+            display: flex;
+            align-items: stretch;
+            height: 100%;
+        }
+
+        .left-sidebar {
+            padding-right: 20px;
+            padding-left: 20px;
+            border: 1px solid #e5a4a0;
+            background-color: #BF625F;
+            font-size: 30px;
+            align-content: center;
+        }
+
+        .right-sidebar {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .box {
+            border: 1px solid #82B366;
+            background-color: #D5E8D4;
+            margin-left: 10px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .feature-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .feature-center {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .feature-items {
+            padding: 80px 240px;
+        }
+
+        .feature-bottom{
+            padding: 105px 180px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Header</div>
+        <div class="main">
+            <div class="left-sidebar">Left sidebar</div>
+            <div class="right-sidebar">
+                <div class="feature-top">
+                    <div class="box feature-items">Feature 1</div>
+                    <div class="box feature-items">Feature 2</div>
+                </div>
+                <div class="feature-center">
+                    <div class="box feature-items">Feature 3</div>
+                    <div class="box feature-items">Feature 4</div>
+                </div>
+                <div class="box feature-bottom">Feature 5</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

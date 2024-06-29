@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex2</title>
+    <style>
+      .container {
+        background-color: grey;
+        width: 70%;
+        border: 2px solid black;
+        margin: auto;
+        padding: 20px 25px;
+        position: relative;
+      }
+
+      .box {
+        background-color: pink;
+        border: 2px solid black;
+        padding-left: 15px;
+      }
+
+      button {
+        margin-top: 15px;
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 10px 25px;
+        color: white;
+      }
+
+      #delete {
+        background-color: red;
+      }
+
+      #delete:hover ~ #popup {
+        opacity: 1;
+      }
+
+      #keep {
+        background-color: blue;
+      }
+
+      #popup {
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 10px 25px;
+        width: 10%;
+        background-color: aqua;
+        position: absolute;
+        top: 45px;
+        left: -25px;
+        opacity: 0;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit ea
+          officia ut nulla nihil aspernatur accusantium tenetur labore ipsam
+          enim. Possimus aliquam aspernatur perferendis natus nobis similique
+          culpa officia repudiandae! Lorem ipsum dolor sit amet consectetur,
+          adipisicing elit. Impedit ea officia ut nulla nihil aspernatur
+          accusantium tenetur labore ipsam enim. Possimus aliquam aspernatur
+          perferendis natus nobis similique culpa officia repudiandae!
+        </p>
+      </div>
+
+      <button id="delete">Delete</button>
+      <button id="keep">Keep</button>
+
+      <p id="popup">Có không giữ, xoá đừng tiếc</p>
+    </div>
+  </body>
+</html>

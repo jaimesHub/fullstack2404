@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7</title>
+    <style>
+        .container {
+            width: 768px;
+            height: 630px;
+            background-color: #dddcdc;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .post {
+            width: 448px;
+            height: 100%;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+        }
+        
+        .post-user {
+            padding: 25px;
+            position: relative;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid black;
+            background-image: url("./chup-anh-di-bien.jpg");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .user-info {
+            position: absolute;
+            top: 15px;
+            left: 100px;
+            
+        }
+
+        #user-info-name {
+            position: absolute;
+            top: 15px;
+            left: -8px;
+            width: 110px;
+        }
+
+        #user-info-job {
+            position: absolute;
+            top: 40px;
+            left: -8px;
+            width: 130px;
+        }
+
+        .more-info {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+        }
+
+        .post-content {
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 10px;
+        }
+
+        .post-img {
+            background-image: url("./chup-anh-di-bien.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 310px;
+        }
+
+        .post-btn {
+            padding: 15px;
+            position: relative;
+        }
+
+        .btn {
+            width: 90px;
+            height: 20px;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px;
+            margin: 15px;
+        }
+
+        .btn:hover {
+            background-color: grey;
+        }
+
+        .btn-like {
+            position: absolute;
+            top: 23px;
+            left: 5px;
+            
+        }
+
+        .btn-comment {
+            position: absolute;
+            top: 23px;
+            left: 145px;
+        }
+
+        .btn-share {
+            position: absolute;
+            top: 23px;
+            left: 285px;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="post">
+            <div class="post-user">
+                <div class="avatar"></div>
+                <div class="user-info">
+                    <div id="user-info-name">Segun Adebayo</div>
+                    <div id="user-info-job">Creator, Chakra UI</div>
+                </div>
+                <div class="more-info">*</div>
+            </div>
+
+            <div class="post-content">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, 
+                    adipisicing elit. Et assumenda quas vero ut inventore, 
+                    officia sit quisquam, debitis molestias consequatur fugit, 
+                    dolorum ea dignissimos tempora nesciunt animi soluta accusantium sunt.
+                </p>
+            </div>
+
+            <div class="post-img"></div>
+
+            <div class="post-btn">
+                <div class="btn btn-like">Like</div>
+                <div class="btn btn-comment">Comment</div>
+                <div class="btn btn-share">Share</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

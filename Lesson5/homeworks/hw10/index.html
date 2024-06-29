@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 10</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .header {
+            padding-top: 16px;
+            padding-bottom: 16px;
+            border: 1px solid #D9BC61;
+            background-color: #FFF2CC;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .features {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .feature {
+            width: 275px;
+            height: 130px;
+            text-align: center;
+            border: 1px solid #e5a4a0;
+            background-color: #BF625F;
+            font-size: 30px;
+            align-content: center;
+            margin-bottom: 10px;
+        }
+
+        .images {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .image {
+            padding: 120px 300px;
+            border: 1px solid #A4A56B;
+            background-color: #FFFF88;
+            font-size: 30px;
+            align-content: center;
+            margin-top: 20px;
+        }
+
+        .contents {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .content-right {
+            padding: 330px 200px;
+            border: 1px solid #82B366;
+            background-color: #D5E8D4;
+            font-size: 30px;
+            align-self: center;
+            margin-top: 10px;
+        }
+
+        .content-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-item {
+            font-size: 30px;
+            align-content: center;
+            margin-top: 10px;
+        }
+
+        .item-1 {
+            padding: 180px 380px;
+            border: 1px solid #A89293;
+            background-color: #FFCCCC;
+        }
+
+        .item-2 {
+            padding: 126px 380px;
+            border: 1px solid #DBB28B;
+            background-color: #FFCC99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Header</div>
+        <div class="features">
+            <div class="feature">Feature 1</div>
+            <div class="feature">Feature 2</div>
+            <div class="feature">Feature 3</div>
+            <div class="feature">Feature 4</div>
+            <div class="feature">Feature 5</div>
+            <div class="feature">Feature 6</div>
+            <div class="feature">Feature 7</div>
+            <div class="feature">Feature 8</div>
+            <div class="feature">Feature 9</div>
+            <div class="feature">Feature 10</div>
+        </div>
+        <div class="images">
+            <div class="image">Image 1</div>
+            <div class="image">Image 2</div>
+            <div class="image">Image 3</div>
+            <div class="image">Image 4</div>
+        </div>
+        <div class="contents">
+            <div class="content-right">Content 1</div>
+            <div class="content-left">
+                <div class="content-item item-1">Content 2</div>
+                <div class="content-item item-2">Content 3</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

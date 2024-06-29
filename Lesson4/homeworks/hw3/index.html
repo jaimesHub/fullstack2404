@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3</title>
+    <style>
+        .container {
+            background-color: #DAE8FC;
+            width: 276px;
+            height: 718px;
+            border: 1px solid black;
+        }
+
+        .box {
+            background-color: #D9DBD3;
+            width: 250px;
+            height: 85px;
+            border: 1px solid black;
+            text-align: center;
+            padding-top: 20px;
+            margin: auto;
+            margin-top: 10px;
+        }
+
+
+        #user-content {
+            position: relative;
+        }
+
+        #sub-container {
+            position: absolute;
+            top: 17%;
+            left: 21%;
+            padding-top: 5px;
+            opacity: 0;
+        }
+
+        .sub-box {
+            background-color: #D9DBD3;
+            width: 250px;
+            height: 85px;
+            border: 1px solid black;
+            text-align: center;
+            padding-top: 20px;
+            margin: auto;
+        }
+
+        #copyright {
+            text-align: center;
+            margin-top: 230px;
+        }
+
+        #user-content:hover ~ #sub-container {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">Home</div>
+        <div id="user-content" class="box">Users</div>
+        <div class="box">Products</div>
+        <div class="box">Orders</div>
+        <p id="copyright">Copyright 2022</p>
+        <div id="sub-container">
+            <div class="sub-box">Customers</div>
+            <div class="sub-box">Admins</div>
+            <div class="sub-box">VIP</div>
+            <div class="sub-box">My Staffs</div>
+        </div>
+    </div>
+</body>
+</html>

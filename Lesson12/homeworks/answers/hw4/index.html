@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng ký tài khoản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .form-container h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-container input,
+        .form-container select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #218838;
+        }
+        .required {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Đăng ký tài khoản</h2>
+        <div class="form-container">
+            <label for="fullname">Họ và tên <span class="required">*</span></label>
+            <input type="text" id="fullname" name="fullname"/>
+
+            <label for="gender">Giới tính</label>
+            <select id="gender" name="gender">
+                <option value="male">Nam</option>
+                <option value="female">Nữ</option>
+                <option value="other">Khác</option>
+            </select>
+
+            <label for="age">Tuổi</label>
+            <input type="number" id="age" name="age" />
+
+            <label for="address">Địa chỉ</label>
+            <input type="text" id="address" name="address" />
+
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email"/>
+
+            <label for="password">Mật khẩu <span class="required">*</span></label>
+            <input type="password" id="password" name="password" />
+
+            <button id="submit-button" type="submit">Đăng ký</button>
+        </div>
+    </div>
+
+    <script>
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function validateBeforeSubmit() {
+            let isValid = true;
+
+            const requiredFullname = document.getElementById("fullname");
+            if (requiredFullname.textLength === 0) {
+                alert("Họ và tên không được để trống!");
+                isValid = false;
+            }
+
+            const requiredEmail = document.getElementById("email");
+            if (requiredEmail.textLength === 0) {
+                alert("Email không được để trống!");
+                isValid = false;
+            }
+
+            if(!validateEmail(requiredEmail.value)) {
+                alert("Email không đúng định dạng!");
+                isValid = false;
+            }
+
+            const requiredPassword = document.getElementById("password");
+            if (requiredPassword.textLength < 6) {
+                alert("Mật khẩu không được để trống hoặc số lượng kí tự ít hơn 6!");
+                isValid = false;
+            }
+
+            if(isValid) {
+                alert("Đăng ký thành công!");
+                requiredFullname.value = "";
+                document.getElementById("age").value = 0;
+                document.getElementById("address").value = "";
+                requiredEmail.value = "";
+                requiredPassword.value = "";
+
+            } else {
+                alert("Hãy nhập đầy đủ thông tin");
+            }
+        }
+
+        const submitButton = document.getElementById("submit-button");
+        submitButton.addEventListener("click", validateBeforeSubmit);
+    </script>
+</body>
+</html>

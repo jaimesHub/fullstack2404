@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM & Event</title>
+</head>
+<body>
+    <!-- getElement -->
+    <p id="paragraph" class="text">Thẻ p1</p>
+    <p id="paragraph" class="text">Thẻ p2</p>
+    <div class="text">
+        Đây là thẻ div
+    </div>
+
+    <!-- innerHTML & innerText -->
+    <h1 id="h1">Tiêu đề h1</h1>
+
+    <!-- get attribute -->
+    <a href="https://www.github.com/" id="tagA" class="test" data-src="https://www.vnexpress.vn">github.com</a>
+
+    <!-- quizzes -->
+    <h5>Favorite things</h5>
+    <ul id="favorite-list">
+        <li class="favorite-list-item">Eat</li>
+        <li class="favorite-list-item">Sleep</li>
+        <li class="favorite-list-item">Code</li>
+    </ul>
+
+    <!-- event -->
+    <button onclick="logger()">Hello</button>
+    <button id="btn">Bye Bye</button>
+    <button id="btn12">Bye Bye Bye</button>
+    <script src="./scripts.js"></script>
+    <script>
+        function logger() {
+            alert("hello!");
+        }
+
+        function sayBye1() {
+            alert("say bye 1");
+        }
+
+        function sayBye2() {
+            alert("say bye 2");
+        }
+        
+        // const $btn = document.getElementById("btn");
+        // $btn.onclick = function() {
+        //     alert("bye bye!");
+        // }
+
+        const $btn12 = document.getElementById("btn12");
+        // $btn12.onclick = sayBye1;
+        // $btn12.onclick = sayBye2;
+
+        $btn12.addEventListener("click", sayBye1);
+        $btn12.addEventListener("click", sayBye2);
+
+    </script>
+</body>
+</html>

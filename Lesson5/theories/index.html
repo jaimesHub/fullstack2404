@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex box example</title>
+    <style>
+        /* concept */
+        /* .container {
+            display: flex;
+        } */
+
+        /* thuoc tinh flex-direction */
+        /* .container {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .item {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: red;
+        } */
+
+        /* thuoc tinh flex-wrap: wrap */
+        /* .container {
+            display: flex;
+            flex-wrap: wrap-reverse;
+        }*/
+
+        /* .item {
+            width: 30%;
+            height: 200px;
+            border: 1px solid black;
+            background-color: red;
+        } */
+
+        /* justify-content */
+        
+        /* .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+        .item {
+            width: 20%;
+            height: 200px;
+            border: 1px solid black;
+            background-color: red;
+        } */
+
+        /* Align-item */
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 400px;
+            background-color: green;
+            align-items: center;
+        }
+
+        .item {
+            width: 20%;
+            height: 200px;
+            border: 1px solid black;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- concepts -->
+    <!-- <div class="container">
+        <div class="item">
+            <h1>The h1 nay k phai la con cua container</h1>
+        </div>
+        <div class="item">Item 2</div>
+    </div> -->
+
+    <!-- thuộc tính flex-wrap: wrap -->
+    <!-- <div class="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+
+    </div> -->
+
+    <!-- justify-content -->
+    <!-- <div class="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+    </div> -->
+
+    <!-- Align-item & order & -->
+    <!-- <div class="container">
+        <div class="item" style="font-size: 12px; order: 2">Item 1</div>
+        <div class="item" style="font-size: 16px; order: 1;">Item 2</div>
+        <div class="item" style="font-size: 18px; order: 2">Item 3</div>
+        <div class="item" style="font-size: 20px; order: -1;">Item 4</div>
+    </div> -->
+
+    <!-- Align-self -->
+    <div class="container">
+        <div class="item" style="font-size: 12px">Item 1</div>
+        <div class="item" style="font-size: 16px; align-self: self-start;">Item 2</div>
+        <div class="item" style="font-size: 18px">Item 3</div>
+        <div class="item" style="font-size: 20px; align-self: self-end;">Item 4</div>
+    </div>
+</body>
+</html>

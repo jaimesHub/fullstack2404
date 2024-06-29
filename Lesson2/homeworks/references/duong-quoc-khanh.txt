@@ -1,0 +1,207 @@
+Câu 1: Thẻ <input type='checkbox' ...>dùng để làm gì?
+A. Tạo một ô text để nhập dữ liệu
+B. Tạo một nhóm đối tượng chọn nhưng chọn duy nhất
+C. Tạo một nhóm đối tượng chọn được nhiều đối tượng
+D. Tất cả các ý trên
+-> C
+
+Câu 2: Thẻ <input type ="text'' ...> dùng để làm gì?
+A. Tạo một ô text để nhập dữ liệu
+B. Tạo một ô password
+C. Tạo một cùng có nhiều cột nhiều dòng
+D. Tất cả các ý trên
+-> A
+
+Câu 3: Cấu trúc đơn giản của một trang HTML được khai báo theo thứ tự là:
+A. HEAD, HTML, BODY
+B. HEAD, TITLE, BODY
+C. HEAD, BODY, HTML
+D. HTML, HEAD, BODY
+-> D
+
+Câu 4: Để trình bày một đoạn văn bản trong tài liệu HTML ta dùng thẻ:
+A. <HR>
+B. <P>
+C.<BR>
+D.<PRE>
+-> B
+
+Câu 5: Để chèn hình ảnh vào trang web ta dùng thẻ
+A. <PIC>
+B. <IMG>
+C. <IMAGE>
+D. <PICTURE>
+-> B
+
+Câu 6: Để nhóm các thành phần có liên quan với nhau ta dùng thẻ:
+A. <span>
+B. <pre>
+C. <blockquote>
+D. <div>
+-> D
+
+Câu 7: Để khai báo một danh sách có thứ tự ta sử dụng thẻ:
+A. <li>
+B. <ul>
+C. <ol>
+D. <dl>
+-> C
+
+Câu 8: Để khai báo một bảng trên trang web ta sử dụng thẻ:
+A. <tr>
+B. <td>
+C. <table>
+D. <th>
+-> C
+
+Câu 9: Để khai báo một phần tử điều khiển nhập văn bản chỉ có một dòng ta sử dụng thẻ:
+A. <input type="text">
+B. <input type ="hidden"
+C. <input type="password"
+D. <textarea>
+-> A
+
+Câu 10: Để khai báo một phần tử điều khiển cho phép người dùng có thể chọn một hay nhiều giá trị ta sử dụng thẻ:
+A. <input type= "text">
+B. <input type ="radio"
+C. <input type="checkbox"
+D. <textarea>
+-> C
+
+Câu 11: Thứ tự xép tầng của css theo độ ưu tiên từ thấp đến cao như sau:
+A. External style sheet, internal style sheet, browser default, inline style
+B. Inline style, browser default, external style sheet, internal style sheet
+C. Browser default, internal style sheet, inline style, external style sheet
+D. Browser default, external style sheet, internal style sheet, inline style
+-> D
+
+Câu 12: Css định nghĩa các style khác nhau cho cùng một loại html element bằng cách sử dụng:
+A. Class selector
+B. Id selector
+C. Name selector
+D. Type selector
+-> B
+
+Câu 13: Để liên kết tới external style sheet ta sử dụng thẻ:
+A. <style>
+B. <a>
+C. <link>
+D. <css>
+-> C
+
+Câu 14: Đâu là tag tạo ra tiêu đề web kích cỡ lớn nhất.
+A. <heading>
+B. <h1>
+C. <h6>
+D. <head>
+-> B
+
+Câu 15: Đâu là tag tạo ra mầu nền của web?
+A. <body color="yellow">
+B. <body bgcolor="yellow">
+C. <background>yellow</background>
+-> B
+
+Câu 16: Đâu là tag tạo ra liên kết (links) trong web
+A. <a url="http://www.w3schools.com">w3schools.com</a>
+B. <a>http://www.w3schools.com</a>
+C. <a href="http://www.w3schools.com">w3schools</a>
+D. <a name="http://www.w3schools.com">w3schools.com</a>
+-> C
+
+Câu 17: Tag nào tạo ra 1 checkbox?
+A. <check>
+B. <input type="check">
+C. <checkbox>
+D. <input type="checkbox">
+-> D
+
+Câu 18: Tag nào dùng để tạo hình nền cho web?
+A. <body background="background.gif">
+B. <background img="background.gif">
+C. <img src="blackground.gif"background>
+-> A
+
+Câu 19: Css là viết tắt của?
+A. Creative style sheets
+B. Computer style sheets
+C. Cascading style sheets
+D. Colorful style sheets
+-> C
+
+Câu 20: Thuộc tính nào định nghĩa css ngay trong 1 tag?
+A. Font
+B. Class
+C. Style
+D. Styles
+-> C
+
+Câu 21: Dòng nào tuân theo đúng cú pháp của css?
+A. Body {color: black}
+B. {body;color:black}
+C. Body:color=black
+D. {body:color=black(body}
+-> A
+
+Câu 22: Dòng nào thể hiện đúng một comment (lời chú thích) trong css?
+A. /* this is a comment */
+B. // this is a comment //
+C. ‘ this is a comment
+D. // this is a comment
+-> A
+
+Câu 23: Làm thế nào thêm màu nền cho tất cả các phần tử <h1> ?
+A. H1.all {background-color:#ffffff}
+B. H1 {background-color:#ffffff}
+C. All.h1 {background-color:#ffffff}
+D. Tất cả các câu trên đều sai.
+-> B
+
+Câu 24: Làm thế nào thay màu nền của chữ (text)?
+A. Text-color=
+B. Fgcolor:
+C. Color:
+D. Text-color:
+-> C
+
+Câu 25: Thuộc tính nào thay đổi kích cỡ chữ?
+A. Font-style
+B. Font-size
+C. Text-style
+D. Text-size
+-> B
+
+Câu 26: Thuộc tính nào làm chữ trong tag p trở thành chữ đậm?
+A. {text-size:bold}
+B. <p style="pont-size:bold">
+C. <p style="text-size:bold">
+D. P {font-weight:bold}
+-> D
+
+Câu 27: Làm thế nào để hiển thị viền 1 phần tử với kích thước đường viền như sau: The top border = 10 pixels the bottom border = 5 pixels the left border = 20 pixels the right border = 1pixel?
+A. Border-width:5px 20px 10px 1px
+B. Border-width:10px 5px 20px 1px
+C. Border-width:10px 1px 5px 20px
+D. Border-width:10px 20px 5px 1px
+-> B
+
+Câu 28: Xét đoạn lệnh sau. Trong đoạn lệnh trên ‘test’ được gọi là <style type="text/css"> #test {color:limegreen;fontsize:x-large} </style>
+A. Class selector
+B. Id selector
+C. Tag selector
+D. None of these
+-> B
+
+Câu 29: Đặt dòng liên kết với file CSS ở vùng nào trong file HTML?
+A. Trong thẻ <body>
+B. Trong thẻ <head>
+C. Ở cuối file HTML
+D. Ở đầu file HTML
+-> B
+
+Câu 30: Nhóm các đối tượng có cùng thuộc tính và có thể được sử dụng nhiều lần là:
+A. class
+B. id
+C. Cả A và B đều đúng
+D. Cả A và B đều sai
+-> A
