@@ -1,0 +1,9 @@
+.custom-list-group .list-group-item {
+    border: none;
+}
+
+.nav-link {
+    cursor: pointer;
+    color: black;
+} 
+
