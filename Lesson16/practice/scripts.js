@@ -127,47 +127,80 @@
 // console.log(this.x); // "global"
 // console.log(this.y); // undefined
 
-// spread operator
-const arr = [4, 5, 6]
-const arr2 = [1, 2, 3]
+// // spread operator
+// const arr = [4, 5, 6]
+// const arr2 = [1, 2, 3]
 
-// use spread for getting a list of number.
-const max = Math.max(...arr) // 6
+// // use spread for getting a list of number.
+// const max = Math.max(...arr) // 6
 
-// copy all elements from arr to another array and add 7 to tail
-let arrCloned = [...arr, 7] // [4, 5, 6, 7]
+// // copy all elements from arr to another array and add 7 to tail
+// let arrCloned = [...arr, 7] // [4, 5, 6, 7]
 
-// copy all elements from arr to another array and add 3 to head
-arrCloned = [3, ...arr] // [3, 4, 5, 6]
+// // copy all elements from arr to another array and add 3 to head
+// arrCloned = [3, ...arr] // [3, 4, 5, 6]
 
-// concat 2 arrays and add a number in between
-const concatedArray = [...arr, 0, ...arr2] // [4, 5, 6, 0, 1, 2, 3]
+// // concat 2 arrays and add a number in between
+// const concatedArray = [...arr, 0, ...arr2] // [4, 5, 6, 0, 1, 2, 3]
 
-const obj = {name: "T3H"}
+// const obj = {name: "T3H"}
 
-// copy all fields in object to another object and add field
-const obj2 = {...obj, address: "Hanoi"} // {name: "T3H", address: "Hanoi"}
+// // copy all fields in object to another object and add field
+// const obj2 = {...obj, address: "Hanoi"} // {name: "T3H", address: "Hanoi"}
 
-// copy all fields in object to another object and overwrite field
-const obj3 = {...obj, name: "Code Intensive"} // {name: "Code Intensive"}
-const obj4 = {name: "Code Intensive", ...obj} // {name: "T3H"}
+// // copy all fields in object to another object and overwrite field
+// const obj3 = {...obj, name: "Code Intensive"} // {name: "Code Intensive"}
+// const obj4 = {name: "Code Intensive", ...obj} // {name: "T3H"}
 
-// rest operator
-function sum(...args) {
-    let total = 0
-      for (let i = 0; i < args.length; i++) {
-          total += args[i]
-    }
-    return total;
-}
-sum(1, 2, 3, 4, 5) // 15
+// // rest operator
+// function sum(...args) {
+//     let total = 0
+//       for (let i = 0; i < args.length; i++) {
+//           total += args[i]
+//     }
+//     return total;
+// }
+// sum(1, 2, 3, 4, 5) // 15
 
-// Wrong: multiple rest operator
-// const sum = (...first, ...second) => {}
+// // Wrong: multiple rest operator
+// // const sum = (...first, ...second) => {}
 
-// Wrong: rest operator cannot be the first params
-// const sum2 = (...first, second, third) => {}
+// // Wrong: rest operator cannot be the first params
+// // const sum2 = (...first, second, third) => {}
 
-// Correct
-// const sum3 = (first, second, ...third) => {}
+// // Correct
+// // const sum3 = (first, second, ...third) => {}
 
+// // Destructuring
+// // const person = {name: "T3H", age: 7}
+// // const {name, age} = person;
+
+// // const coordinate = [0, 1, 1];
+// // const [x, y, z] = coordinate;
+
+// // Assignment separated from declaration
+// let x, y
+// [x, y] = [1, 2]
+
+// // Default value
+// // const [a=2, b=3] = [1] // a = 1, b = 3
+
+// // Ignore some value
+// // const [a, ,b] = [1, 2, 3] // a = 1, b = 3
+
+// // Use with rest
+// const [a, ...b] = [1, 2, 3] // a = 1, b = [2, 3]
+
+// // Nested object
+// const person = {
+// 	name: "T3H",
+// 	address: {city: "Hanoi", street: "Nguyen Chi Thanh"}
+// }
+// const {name, address: {city, street}} = person 
+// // name = "T3H", city = "Hanoi", street = "Nguyen Chi Thanh"
+
+// // Destrucring on params
+// const sayHello = ({name}) => {
+// 	console.log(`Hello, my name is ${name}`);
+// }
+// sayHello({name: "T3H", age: 7})

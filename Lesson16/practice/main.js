@@ -27,3 +27,6 @@ const handleFormatDate = (input) => {
 }
 
 handleFormatDate('12/31/2021');
+
+import { swap } from './modules/destructring.js';
+console.log(swap(1, 2));
