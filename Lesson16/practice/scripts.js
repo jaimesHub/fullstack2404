@@ -60,6 +60,29 @@
 
 // context this in arrow function
 
+// arrow function with hoisting
+// const result = add(1, 2);
+// console.log(result);
+
+// // Function expression, hoisting supported
+// function add(a, b) {
+//     return a + b;
+// }
+
+// // Anonymous function, no hoisting supported
+// // console.log(sum(1, 2)); // ReferenceError: Cannot access 'sum' before initialization
+// const sum = function(a, b) {
+//     return a + b;
+// }
+// console.log(sum(1, 2));
+
+// // Arrow function, no hoisting supported
+// // console.log(sum(1, 2)); // ReferenceError: Cannot access 'sum' before initialization
+// const sum = (a, b) => {
+//     return a + b;
+// }
+// console.log(sum(1, 2));
+
 // Block-Scoped Constructs Let and Const
 
 // // var : một biến được khai báo sử dụng var sẽ được gọi là function scoped, có nghĩa là nó sẽ tồn tại trong phạm vi của function được khai báo.
