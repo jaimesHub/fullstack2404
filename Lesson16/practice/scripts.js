@@ -204,3 +204,35 @@
 // 	console.log(`Hello, my name is ${name}`);
 // }
 // sayHello({name: "T3H", age: 7})
+
+// function mystery(...params) {
+// 	return params
+// }
+// let a = mystery(1, 23, 4);
+// console.log(a)
+
+// console.log([...[..."..."]].length)
+
+// const obj = {
+// 	name: "T3h"
+// }
+// const sayHello = (x) => {
+// 	let {name} = x
+//     name = "Code Intensive"
+//     return x;
+// }
+// console.log(sayHello(obj))
+
+// let arr = [1, 2, 3, 4, 5]
+// let newArr = arr.map(item => {
+//     if (item % 2 === 0) {
+//         return item;
+//     }
+
+// 	return item * 2;
+// })
+// console.log(arr, newArr);
+
+// const arr = [1, 2, 3, 4, 5]
+// const total = arr.filter(item => item % 2 === 0).reduce((value, item) => value + item , 10)
+// console.log(total)
