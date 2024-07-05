@@ -17,16 +17,17 @@
             <div class="row">
                 <div class="col-sm-8 d-flex">
                     <div class="col-sm-6 me-5">
-                        <input type="text" class="form-control bg-body-secondary" placeholder="Tên" aria-label="Name">
+                        <input id="name-input" type="text" class="form-control bg-body-secondary" placeholder="Tên" aria-label="Name">
                     </div>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control bg-body-secondary" placeholder="Điện thoại"
+                        <input id="phone-input" type="text" class="form-control bg-body-secondary" placeholder="Điện thoại"
                             aria-label="Phone">
                     </div>
                 </div>
-                <div class="col-sm-4 d-md-flex justify-content-md-end" id="add-button">
-                    <button type="button" class="btn btn-primary"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">THÊM</button>
+                <div class="col-sm-4 d-md-flex justify-content-md-end">
+                    <button id="add-button" type="button" class="btn btn-primary"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;"
+                    >THÊM</button>
                 </div>
             </div>
 
@@ -35,45 +36,22 @@
             <div class="row mb-3">
                 <div class="col-sm-8 d-flex">
                     <div class="col-sm-8  w-100 me-5">
-                        <input type="text" class="form-control bg-body-secondary" placeholder="Tìm kiếm" aria-label="search">
+                        <input id="search-input" type="text" class="form-control bg-body-secondary" placeholder="Tìm kiếm" aria-label="search">
                     </div>
                 </div>
-                <div class="col-sm-4 d-md-flex justify-content-md-end" id="add-button">
-                    <button type="button" class="btn btn-primary me-1"
+                <div class="col-sm-4 d-md-flex justify-content-md-end">
+                    <button id="search-btn" type="button" class="btn btn-primary me-1"
                         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 2rem; --bs-btn-font-size: 1rem;">TÌM</button>
-                    <button type="button" class="btn btn-primary"
+                    <button id="delete-btn" type="button" class="btn btn-primary"
                         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 1rem;">XOÁ TRÙNG</button>
                 </div>
             </div>
 
-            <div class="card d-flex flex-row mb-3 bg-body-secondary">
-                <div class="card-body d-flex flex-row">
-                    Alice
-                </div>
-                <div class="card-body d-flex flex-row-reverse">
-                    (816)-403-5456
-                </div>
-            </div>
-
-            <div class="card d-flex flex-row mb-3 bg-body-secondary">
-                <div class="card-body d-flex flex-row">
-                    Alice
-                </div>
-                <div class="card-body d-flex flex-row-reverse">
-                    (816)-403-5456
-                </div>
-            </div>
-
-            <div class="card d-flex flex-row mb-3 bg-body-secondary">
-                <div class="card-body d-flex flex-row">
-                    Alice
-                </div>
-                <div class="card-body d-flex flex-row-reverse">
-                    (816)-403-5456
-                </div>
-            </div>
+            <div id="contact-users"></div>
         </div>
     </div>
+
+    <script src="./main.js"></script>
 </body>
 
 </html>
