@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact-books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contact Books</h1>
+        <div id="contact">
+            <div class="row">
+                <div class="col-sm-8 d-flex">
+                    <div class="col-sm-6 me-5">
+                        <input type="text" class="form-control bg-body-secondary" placeholder="Tên" aria-label="Name">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control bg-body-secondary" placeholder="Điện thoại"
+                            aria-label="Phone">
+                    </div>
+                </div>
+                <div class="col-sm-4 d-md-flex justify-content-md-end" id="add-button">
+                    <button type="button" class="btn btn-primary"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">THÊM</button>
+                </div>
+            </div>
+
+            <hr class=".bg-secondary border-1 border-bottom border-dark" />
+
+            <div class="row mb-3">
+                <div class="col-sm-8 d-flex">
+                    <div class="col-sm-8  w-100 me-5">
+                        <input type="text" class="form-control bg-body-secondary" placeholder="Tìm kiếm" aria-label="search">
+                    </div>
+                </div>
+                <div class="col-sm-4 d-md-flex justify-content-md-end" id="add-button">
+                    <button type="button" class="btn btn-primary me-1"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 2rem; --bs-btn-font-size: 1rem;">TÌM</button>
+                    <button type="button" class="btn btn-primary"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 1rem;">XOÁ TRÙNG</button>
+                </div>
+            </div>
+
+            <div class="card d-flex flex-row mb-3 bg-body-secondary">
+                <div class="card-body d-flex flex-row">
+                    Alice
+                </div>
+                <div class="card-body d-flex flex-row-reverse">
+                    (816)-403-5456
+                </div>
+            </div>
+
+            <div class="card d-flex flex-row mb-3 bg-body-secondary">
+                <div class="card-body d-flex flex-row">
+                    Alice
+                </div>
+                <div class="card-body d-flex flex-row-reverse">
+                    (816)-403-5456
+                </div>
+            </div>
+
+            <div class="card d-flex flex-row mb-3 bg-body-secondary">
+                <div class="card-body d-flex flex-row">
+                    Alice
+                </div>
+                <div class="card-body d-flex flex-row-reverse">
+                    (816)-403-5456
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
