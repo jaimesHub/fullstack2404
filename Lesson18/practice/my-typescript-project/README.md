@@ -1,0 +1,5 @@
+- Quản lý Sách Thư Viện
+    - Định nghĩa các kiểu dữ liệu: Tạo các interface Book, Member, và Library. Book có các thuộc tính như id, title, author, và available (boolean). Member có các thuộc tính như id, name, và borrowedBooks (mảng các Book). Library có các thuộc tính như books và members.
+    - Quản lý sách: Viết các phương thức trong class Library để thêm, xóa, và cập nhật thông tin sách.
+    - Quản lý thành viên: Viết các phương thức trong class Library để thêm, xóa, và cập nhật thông tin thành viên.
+    - Quản lý mượn trả sách: Viết các phương thức để mượn và trả sách, đảm bảo cập nhật trạng thái available của sách và danh sách borrowedBooks của thành viên.
