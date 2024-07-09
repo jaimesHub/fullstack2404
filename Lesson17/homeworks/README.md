@@ -2,14 +2,14 @@
 
 ## Bài tập 1: Cơ bản về Kiểu dữ liệu
 - Tạo biến và khai báo kiểu: Hãy tạo các biến sau và khai báo kiểu phù hợp cho mỗi biến:
-	- Biến fullName lưu trữ tên đầy đủ của một người.
-	- Biến age lưu trữ tuổi của người đó.
-	- Biến isStudent biểu thị người đó có phải là sinh viên hay không.
-- Viết hàm printId nhận vào một tham số có thể là chuỗi hoặc số. Nếu tham số là chuỗi, hàm sẽ in ra ID: <tham số>. Nếu tham số là số, hàm sẽ in ra Employee ID: <tham số>.
-- Định nghĩa alias Person cho một object có các thuộc tính name (kiểu string) và age (kiểu number). Sử dụng alias này để khai báo một biến person với các giá trị tương ứng.
+	- Biến `fullName` lưu trữ tên đầy đủ của một người.
+	- Biến `age` lưu trữ tuổi của người đó.
+	- Biến `isStudent` biểu thị người đó có phải là sinh viên hay không.
+- Viết hàm `printId` nhận vào một tham số có thể là chuỗi hoặc số. Nếu tham số là chuỗi, hàm sẽ in ra ID: <tham số>. Nếu tham số là số, hàm sẽ in ra Employee ID: <tham số>.
+- Định nghĩa alias `Person` cho một object có các thuộc tính name (kiểu string) và age (kiểu number). Sử dụng `alias` này để khai báo một biến person với các giá trị tương ứng.
 
 ## Bài tập 2: Mảng và Tuple
-- Mảng: Tạo một mảng numbers chứa các số nguyên. Viết hàm sumArray nhận vào một mảng số nguyên và trả về tổng của các phần tử trong mảng.
+- Mảng: Tạo một mảng numbers chứa các số nguyên. Viết hàm `sumArray` nhận vào một mảng số nguyên và trả về tổng của các phần tử trong mảng.
 - Tuple: Định nghĩa một tuple employee có hai phần tử: tên nhân viên (kiểu string) và tuổi (kiểu number). Khởi tạo một biến emp1 là một đối tượng tuple và gán giá trị tương ứng.
 
 ## Bài tập 3: Optional Chaining và Nullish Coalescing
@@ -20,9 +20,9 @@
 
 ## Bài tập 4: Thực hành tổng hợp
 - Shopping Cart: Tạo một interface Product có các thuộc tính name (string) và price (number). Viết một hàm calculateTotal nhận vào một mảng các sản phẩm và tính tổng giá của các sản phẩm đó.
-- Temperature Converter: Viết một class TemperatureConverter có hai phương thức:
-	- toCelsius: Chuyển đổi từ độ Fahrenheit sang Celsius.
-	- toFahrenheit: Chuyển đổi từ độ Celsius sang Fahrenheit.
+- Temperature Converter: Viết một class `TemperatureConverter` có `hai phương thức`:
+	- `toCelsius`: Chuyển đổi từ độ Fahrenheit sang Celsius.
+	- `toFahrenheit`: Chuyển đổi từ độ Celsius sang Fahrenheit.
 - Mô-đun và Export: Tạo một mô-đun mathOperations có các hàm add, subtract, multiply, và divide. Export các hàm này để có thể sử dụng trong các file khác.
 
 ## Bài tập 5: Quản lý Danh sách Công Việc
