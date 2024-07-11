@@ -1,0 +1,22 @@
+export const employees = [
+  { id: 1, name: 'Alice', age: 20, position: 'Software Engineer', departmentId: 1 },
+  { id: 2, name: 'Bob', age: 25, position: 'HR Specialist', departmentId: 2 },
+  { id: 3, name: 'Charlie', age: 30, position: 'Financial Analyst', departmentId: 3 },
+  { id: 4, name: 'Diana', age: 28, position: 'Marketing Coordinator', departmentId: 4 },
+  { id: 5, name: 'Evan', age: 35, position: 'Sales Representative', departmentId: 5 },
+  { id: 6, name: 'Fiona', age: 22, position: 'Support Technician', departmentId: 6 },
+  { id: 7, name: 'George', age: 40, position: 'R&D Scientist', departmentId: 7 },
+  { id: 8, name: 'Hannah', age: 26, position: 'QA Engineer', departmentId: 8 },
+  { id: 9, name: 'Ian', age: 32, position: 'Operations Manager', departmentId: 9 },
+  { id: 10, name: 'Julia', age: 29, position: 'Product Manager', departmentId: 10 },
+  { id: 11, name: 'Kevin', age: 24, position: 'Network Engineer', departmentId: 1 },
+  { id: 12, name: 'Liam', age: 27, position: 'Recruiter', departmentId: 2 },
+  { id: 13, name: 'Mia', age: 31, position: 'Accountant', departmentId: 3 },
+  { id: 14, name: 'Noah', age: 34, position: 'Digital Marketer', departmentId: 4 },
+  { id: 15, name: 'Olivia', age: 23, position: 'Sales Analyst', departmentId: 5 },
+  { id: 16, name: 'Pete', age: 38, position: 'Customer Service Manager', departmentId: 6 },
+  { id: 17, name: 'Quinn', age: 36, position: 'Biotechnologist', departmentId: 7 },
+  { id: 18, name: 'Rachel', age: 29, position: 'Software Tester', departmentId: 8 },
+  { id: 19, name: 'Steve', age: 33, position: 'Logistics Coordinator', departmentId: 9 },
+  { id: 20, name: 'Tina', age: 27, position: 'UI/UX Designer', departmentId: 10 }
+];
