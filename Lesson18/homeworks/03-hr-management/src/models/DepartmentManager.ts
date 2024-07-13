@@ -1,10 +1,14 @@
 import IDepartmentManager from "../interfaces/IDepartmentManager";
 import Department from "./Department";
 import Employee from "./Employee";
+import EmployeeManager from "./EmployeeManager";
 
 export default class DepartmentManager implements IDepartmentManager {
     // Add your code here
-    constructor(public departments: Department[] = []) {}
+    constructor(
+        private employeeManager: EmployeeManager,
+        public departments: Department[] = []
+    ) {}
 
     addDepartment(department: Department): void {
         this.departments.push(department);
@@ -17,6 +21,20 @@ export default class DepartmentManager implements IDepartmentManager {
             return;
         }
 
+        this.departments = this.departments.filter(department => department.id !== id);
+    }
+
+    /**
+     * Replace removeDepartment function by removeDepartmentById function.
+     * @param id 
+     * @returns 
+     */
+    removeDepartmentById(id: number): void {
+        const foundDepartment = this.getDepartmentById(id);
+        if (!foundDepartment) {
+            console.log("Department not found");
+            return;
+        }
         this.departments = this.departments.filter(department => department.id !== id);
     }
 
@@ -80,12 +98,46 @@ export default class DepartmentManager implements IDepartmentManager {
                 return employee;
             }
         });
+        foundEmployee.departmentId = departmentId;
 
         // add employeeId to departmentId
         departmentEmployeeMoves.employees.push(foundEmployee);
 
         // Don't forget validating!!!
 
+    }
+
+    /**
+     * Replace moveEmployeeToDepartment
+     * @param employeeId 
+     * @param departmentId 
+     * @returns 
+     */
+    moveEmployeeToDepartmentIdByEmployeeId(employeeId: number, departmentId: number): void {
+        const foundEmployee = this.employeeManager.getEmployeeById(employeeId);
+        if (!foundEmployee) {
+            console.log("Employee not found");
+            return;
+        }
+
+        const currentDepartment = this.getDepartmentById(foundEmployee.departmentId);
+        if (!currentDepartment) {   
+            console.log("Current department not found");
+            return;
+        }
+
+        const targetDepartment = this.departments.find((department) => department.id === departmentId);
+        if (!targetDepartment) {
+            console.log("Target department not found");
+            return;
+        }
+
+        // update employee's departmentId
+        foundEmployee.departmentId = departmentId;
+        // remove employee from current department
+        currentDepartment.employees = currentDepartment.employees.filter((employee) => employee.id !== employeeId);
+        // add employee to target department
+        targetDepartment.employees.push(foundEmployee);
     }
 
     /**
@@ -110,6 +162,23 @@ export default class DepartmentManager implements IDepartmentManager {
         return { id: departmentId, name };
     }
 
+    /**
+     * Replace getDepartmentWithoutEmployees
+     * @param id 
+     * @returns 
+     */
+    getDepartmentWithoutEmployeesById(id: number): Omit<Department, 'employees'> | undefined {
+        const foundDepartment = this.getDepartmentById(id);
+        if (!foundDepartment) {
+            console.log("Department not found");
+            return;
+        }
+
+        const { employees, ...departmentWithoutEmployees } = foundDepartment;
+
+        return departmentWithoutEmployees;
+    }
+
     // Báo cáo và Thống kê 
 
     /**
@@ -118,31 +187,31 @@ export default class DepartmentManager implements IDepartmentManager {
      * @param departmentId 
      */
     generateDepartmentReport(departmentId: number): string {
-        const index = this.departments.findIndex((department, index) => {
-            if (department.id === departmentId) {
-                return index;
-            }
-        });
+        // const index = this.departments.findIndex((department, index) => {
+        //     if (department.id === departmentId) {
+        //         return index;
+        //     }
+        // });
+        const foundDepartment = this.getDepartmentById(departmentId);
 
-        if (index === -1) {
+        if (!foundDepartment) {
             return "Department not found";
         }
 
-        const department = this.departments[index];
-        const employees = department.employees;
+        // const department = this.departments[index];
+        const employees = foundDepartment.employees;
         
         return `
-            - Department: ${department.name}
+            - Department: ${foundDepartment.name}
             - List of employees: 
                 ${employees.map((employee) => {
                     return `
                         - ID: ${employee.id}
-                        - Name: ${employee.name}
-                        - Age: ${employee.age}
-                        - Position: ${employee.position}
+                            - Name: ${employee.name}
+                            - Age: ${employee.age}
+                            - Position: ${employee.position}
                     `;
-                })}
-        `
+                })}`
     }
 
     /**
@@ -151,19 +220,13 @@ export default class DepartmentManager implements IDepartmentManager {
      * @returns 
      */
     getDepartmentEmployeeCount(departmentId: number): number {
-        const index = this.departments.findIndex((department, index) => {
-            if (department.id === departmentId) {
-                return index;
-            }
-        });
+        const foundDepartment = this.getDepartmentById(departmentId);
 
-        if (index === -1) {
+        if (!foundDepartment) {
             return -1;
         }
 
-        const department = this.departments[index];
-
-        return department.employees.length;
+        return foundDepartment.employees.length;
     }
 
     /**
@@ -174,17 +237,13 @@ export default class DepartmentManager implements IDepartmentManager {
     getAverageEmployeeAgeInDepartment(departmentId: number): number {
         let totalAge = 0;
 
-        const index = this.departments.findIndex((department, index) => {
-            if (department.id === departmentId) {
-                return index;
-            }
-        });
+        const foundDepartment = this.getDepartmentById(departmentId);
 
-        if (index === -1) {
+        if (!foundDepartment) {
             return -1;
         }
 
-        this.departments[index].employees.forEach(employee => {
+        foundDepartment.employees.forEach(employee => {
             totalAge += employee.age;
         });
 

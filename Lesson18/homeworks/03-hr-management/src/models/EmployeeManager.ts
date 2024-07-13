@@ -23,6 +23,20 @@ export default class EmployeeManager implements IEmployeeManager {
         return this.employees.find((employee) => employee.id === id);
     }
 
+    /**
+     * Replace removeEmployee function by removeEmployeeById function.
+     * @param id 
+     * @returns 
+     */
+    removeEmployeeById(id: number): void {
+        const foundEmployee = this.getEmployeeById(id);
+        if (!foundEmployee) {
+            console.log("Employee not found");
+            return;
+        }
+        this.employees = this.employees.filter(employee => employee.id !== id);
+    }
+
     listAllEmployees(): Employee[] {
         return this.employees;
     }
@@ -38,6 +52,16 @@ export default class EmployeeManager implements IEmployeeManager {
             ...this.employees[index],
             ...updatedInfo
         };
+    }
+
+    updateEmployeeById(id: number, updatedInfo: Partial<Employee>): void {
+        const foundEmployee = this.getEmployeeById(id);
+        if (!foundEmployee) {
+            console.log("Employee not found");
+            return;
+        }
+
+        Object.assign(foundEmployee, updatedInfo);
     }
 
     /**
@@ -58,6 +82,26 @@ export default class EmployeeManager implements IEmployeeManager {
         return {
             name: foundEmployee.name,
             position: foundEmployee.position
+        }
+    }
+
+    /**
+     * Utility Types : Pick
+     * Replace getEmployeeBasicInfo function by getEmployeeBasicInfoById function.
+     * @param id 
+     * @returns 
+     */
+    getEmployeeBasicInfoById(id: number): Pick<Employee, 'name' | 'position'> | undefined {
+        const foundEmployee = this.getEmployeeById(id);
+        if (!foundEmployee) {
+            // console.log("Employee not found");
+            return undefined;
+        }
+
+        const {  name, position } = foundEmployee;
+        return {
+            name,
+            position
         }
     }
 
