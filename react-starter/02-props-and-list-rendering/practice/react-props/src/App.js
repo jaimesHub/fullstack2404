@@ -1,20 +1,14 @@
 import './App.css';
-import Navigation from './layouts/Navigation';
-import Header from './layouts/Header';
 import Content from './layouts/Content';
-import Footer from './layouts/Footer';
 
-import { Fragment } from 'react';
+import DefaultLayout from './layouts/DefaultLayout';
 
 
 function App() {
   return (
-    <Fragment>
-      <Navigation />
-      <Header />
+    <DefaultLayout >
       <Content />
-      <Footer />
-    </Fragment>
+    </DefaultLayout>
   );
 }
 

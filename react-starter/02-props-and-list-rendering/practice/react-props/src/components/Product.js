@@ -1,4 +1,5 @@
 const Product = (props) => {
+    console.log(props.children);
     const renderPrice = () => {
         switch (props.type) {
             case 1:
@@ -17,6 +18,7 @@ const Product = (props) => {
     return (
         <div className="col mb-5">
             <div className="card h-100">
+                {props.children}
                 {/* Sale badge*/}
                 {props?.isSale ? <div className="badge bg-dark text-white position-absolute" style={{ top: '0.5rem', right: '0.5rem' }}>Sale</div> : null}
                 {/* Product image*/}
