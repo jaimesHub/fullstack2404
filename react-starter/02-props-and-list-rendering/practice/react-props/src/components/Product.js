@@ -8,7 +8,7 @@ const Product = ({ name = "Default Props Value", type, price1, price2, isSale, i
             case 2:
                 return (
                     <>
-                        <span class="text-muted text-decoration-line-through">${price1}</span>
+                        <span className="text-muted text-decoration-line-through">${price1}</span>
                         ${price2}
                     </>
                 )
@@ -59,12 +59,12 @@ Product.propTypes = {
     isReview: PropTypes.bool
 }
 
-Product.defaultProps = {
-    type: 1,
-    price1: "0.00",
-    price2: "0.00",
-    isSale: false,
-    isReview: false
-}
+// Product.defaultProps = {
+//     type: 1,
+//     price1: "0.00",
+//     price2: "0.00",
+//     isSale: false,
+//     isReview: false
+// }
 
 export default Product;
