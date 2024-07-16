@@ -59,13 +59,12 @@ Product.propTypes = {
     isReview: PropTypes.bool
 }
 
-// Product.defaultProps = {
-//     name: "Default Props Value",
-//     type: 1,
-//     price1: "0.00",
-//     price2: "0.00",
-//     isSale: false,
-//     isReview: false
-// }
+Product.defaultProps = {
+    type: 1,
+    price1: "0.00",
+    price2: "0.00",
+    isSale: false,
+    isReview: false
+}
 
 export default Product;
