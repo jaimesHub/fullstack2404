@@ -1,14 +1,16 @@
 import './App.css';
 import About from './components/About';
+import Contact from './components/Contact';
 import Home from './components/Home';
 import Post from './components/Post';
 
 function App() {
   return (
     <>
-      {/* <Home></Home> */}
-      {/* <About></About> */}
-      <Post />
+      <Home />
+      {/* <About /> */}
+      {/* <Post /> */}
+      {/* <Contact /> */}
     </>
   );
 }
