@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Content = (props) => {
     const renderTypePage = () => {
         switch (props.typePage) {
@@ -15,7 +17,7 @@ const Content = (props) => {
                         <h1>{props.title}</h1>
                         <h2 className="subheading">{props.description}</h2>
                         <span className="meta">
-                            Posted by <a href="#!">{props.author}</a> on {props.date}
+                            Posted by <Link to="/">{props.author}</Link> on {props.date}
                         </span>
                     </div>
                 );
