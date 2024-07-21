@@ -33,6 +33,22 @@ const App = () => {
     setNumber(number - 1);
   }
 
+  const [isShowGreeting, setIsShowGreeting] = useState(false);
+
+  const handleToggleShowGreeting = () => {
+    setIsShowGreeting(!isShowGreeting);
+  }
+
+  const [students, setStudents] = useState([]);
+  const handleAddStudent = () => {
+    const newStudent = {
+      id: students.length + 1,
+      name: `Student ${students.length + 1}`
+    }
+
+    // setStudents([...students, newStudent]); //  spread operator
+    setStudents(prevStudents => [...prevStudents, newStudent]);
+  }
 
   return (
     <div className="App">
@@ -60,7 +76,14 @@ const App = () => {
           height: '30px'
         }} onClick={handleSubtract}>Subtract(-)</button>
       </div>
+      <button style={{ display: 'inline-block', height: '30px' }}
+        onClick={() => setIsShowGreeting(!isShowGreeting)}
+      >
+        Show message
+      </button>
+      {isShowGreeting && <h1>Hello everybody!</h1>}
     </div>
+
   );
 }
 
