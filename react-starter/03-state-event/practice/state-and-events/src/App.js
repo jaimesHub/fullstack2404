@@ -50,6 +50,23 @@ const App = () => {
     setStudents(prevStudents => [...prevStudents, newStudent]);
   }
 
+  const [isLightRed, setIsLightRed] = useState(true);
+  const [isLightYellow, setIsLightYellow] = useState(false);
+  const [isLightGreen, setIsLightGreen] = useState(false);
+
+  const handleNext = () => {
+    if (isLightRed) {
+      setIsLightRed(false);
+      setIsLightYellow(true);
+    } else if (isLightYellow) {
+      setIsLightYellow(false);
+      setIsLightGreen(true);
+    } else {
+      setIsLightGreen(false);
+      setIsLightRed(true);
+    }
+  }
+
   return (
     <div className="App">
       {/* <input onChange={handleChangeInput}></input>
@@ -62,7 +79,7 @@ const App = () => {
         onClick={() => handleClickButton('James')}
       >Hello</button> */}
 
-      <div style={{
+      {/* <div style={{
         display: 'flex',
         justifyContent: 'center'
       }}>
@@ -81,7 +98,56 @@ const App = () => {
       >
         Show message
       </button>
-      {isShowGreeting && <h1>Hello everybody!</h1>}
+      {isShowGreeting && <h1>Hello everybody!</h1>} */}
+
+      <button onClick={handleNext}>Next</button>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '12px'
+      }}>
+        {isLightRed ? <div className='light' style={{
+          width: "50px",
+          height: "50px",
+          backgroundColor: "red",
+          borderRadius: "50%",
+          border: '1px solid black'
+        }}></div> : <div className='light' style={{
+          width: "50px",
+          height: "50px",
+          // backgroundColor: "red",
+          borderRadius: "50%",
+          border: '1px solid black'
+        }}></div>}
+
+        {isLightYellow ? <div className='light' style={{
+          width: "50px",
+          height: "50px",
+          backgroundColor: "yellow",
+          borderRadius: "50%",
+          border: '1px solid black'
+        }}></div> : <div className='light' style={{
+          width: "50px",
+          height: "50px",
+          // backgroundColor: "yellow",
+          borderRadius: "50%",
+          border: '1px solid black'
+        }}></div>}
+
+        {isLightGreen ? <div className='light' style={{
+          width: "50px",
+          height: "50px",
+          backgroundColor: "green",
+          borderRadius: "50%",
+          border: '1px solid black'
+        }}></div> : <div className='light' style={{
+          width: "50px",
+          height: "50px",
+          // backgroundColor: "green",
+          borderRadius: "50%",
+          border: '1px solid black'
+        }}></div>}
+      </div>
     </div>
 
   );
