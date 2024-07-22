@@ -100,12 +100,22 @@ const App = () => {
       </button>
       {isShowGreeting && <h1>Hello everybody!</h1>} */}
 
-      <button onClick={handleNext}>Next</button>
       <div style={{
         display: 'flex',
         justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
         marginTop: '12px'
       }}>
+        <button onClick={handleNext} style={{
+          width: '100px',
+          height: '50px',
+          backgroundColor: 'blue',
+          color: 'white',
+          borderRadius: '5px',
+          border: 'none',
+          marginRight: '12px'
+        }}>Next</button>
         {isLightRed ? <div className='light' style={{
           width: "50px",
           height: "50px",
