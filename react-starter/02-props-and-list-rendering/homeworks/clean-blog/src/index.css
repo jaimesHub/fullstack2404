@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#mainNav .navbar-nav>li.nav-item>a.nav-link.active {
+  border-bottom: 2px solid #f8b400;
+  font-size: 24px;
+}
