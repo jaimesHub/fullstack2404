@@ -25,7 +25,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/post' element={<Post />} />
+        <Route path='/post/:postId' element={<Post />} />
         <Route path='/contact' element={<Contact />} />
         {/* <Route path='*' element={<ErrorPage />} /> */}
         <Route path='/profile' element={<Profile></Profile>} >
