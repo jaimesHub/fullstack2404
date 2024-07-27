@@ -1,7 +1,7 @@
 const InvoicePage = () => {
     return (
         <>
-            <div>Invoice Page</div>
+            <div>Invoice Detail Page</div>
         </>
     )
 }
