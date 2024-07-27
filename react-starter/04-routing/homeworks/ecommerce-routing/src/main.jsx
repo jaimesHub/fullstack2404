@@ -5,6 +5,7 @@ import './index.css'
 
 import {
   createBrowserRouter,
+  Outlet,
   RouterProvider,
 } from 'react-router-dom'
 import ErrorPage from './components/ErrorPage.jsx'
@@ -17,44 +18,72 @@ import ProfilePage from './components/Profile.jsx'
 import AboutPage from './components/About.jsx'
 import LoginPage from './components/Login.jsx'
 import RegisterPage from './components/Register.jsx'
+import { AuthProvider } from './AuthContext.jsx'
+import ProtectedRoute from './ProtectedRoute.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element:
+      <ProtectedRoute>
+        <App />
+      </ProtectedRoute>,
     errorElement: <ErrorPage />,
     children: [
       {
         path: 'products',
-        element: <ProductListPage />,
+        element:
+          <ProtectedRoute>
+            <Outlet />
+          </ProtectedRoute>,
         children: [
           {
+            path: '',
+            element: <ProductListPage />,
+          },
+          {
             path: ':id',
-            element: <ProductPage />
+            element: <ProductPage />,
           }
         ]
       },
       {
         path: 'invoices',
-        element: <InvoiceListPage />,
+        element:
+          <ProtectedRoute>
+            <Outlet />
+          </ProtectedRoute>,
         children: [
           {
+            path: '',
+            element: <InvoiceListPage />,
+          },
+          {
             path: ':id',
-            element: <InvoicePage />
+            element: <InvoicePage />,
           }
         ]
       },
       {
         path: 'cart',
-        element: <CartPage />
+        element:
+          <ProtectedRoute>
+            <CartPage />
+          </ProtectedRoute>
       },
       {
         path: 'profile',
-        element: <ProfilePage />
+        element:
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
       },
       {
         path: 'about',
-        element: <AboutPage />
+        element:
+          <ProtectedRoute>
+            <AboutPage />
+          </ProtectedRoute>
       }
     ]
   },
@@ -75,6 +104,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
