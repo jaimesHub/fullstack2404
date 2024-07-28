@@ -3,13 +3,15 @@ import { createContext, useEffect, useState } from "react";
 export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [isAuthenticated, setIsAuthenticated] = useState(null)
 
     useEffect(() => {
         // Check localStorage for authentication status on initial load
         const authStatus = localStorage.getItem('isAuthenticated');
         if (authStatus) {
-            setIsAuthenticated(true);
+            setIsAuthenticated(true)
+        } else {
+            setIsAuthenticated(false)
         }
     }, [isAuthenticated]);
 
