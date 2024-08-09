@@ -14,18 +14,22 @@ import ManageUsers from "./pages/Admin/ManageUsers";
 import ManageExams from "./pages/Admin/ManageExams";
 import ManageFeedback from "./pages/Admin/ManageFeedback";
 
+import DefaultLayout from './layouts/DefaultLayout';
+
 function App() {
   return (
     <>
       {/* define routes */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="list-exams" element={<ListExams />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path='/detail/:idExam' element={<DetailExam />} />
-        <Route path='/transcript' element={<Transcript />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/change-password' element={<ChangePassword />} />
+        <Route path="/" element={<DefaultLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="list-exams" element={<ListExams />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path='/detail/:idExam' element={<DetailExam />} />
+          <Route path='/transcript' element={<Transcript />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/change-password' element={<ChangePassword />} />
+        </Route>
 
         <Route path='/admin' element={<Admin />}>
           <Route path='exams' element={<ManageExams />} />
@@ -36,11 +40,11 @@ function App() {
         </Route>
       </Routes>
 
-      <div className="App">
+      {/* <div className="App">
         <div className='App-header'>
           <h1>08 - Mini Project - Quizz Test</h1>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

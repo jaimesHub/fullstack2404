@@ -1,13 +1,31 @@
 import Navigation from "./Navigation";
-import Sidebar from "./Sidebar";
+
+import { Outlet } from 'react-router-dom';
+import { Layout } from 'antd';
+
+const { Content } = Layout;
+
+const layoutStyle = {
+    borderRadius: 8,
+    overflow: 'hidden',
+    width: 'calc(50% - 8px)',
+    maxWidth: '1300px',
+    margin: 'auto',
+    backgroundColor: 'transparent',
+    padding: '12px',
+};
 
 const DefaultLayout = () => {
     return (
         <>
             <Navigation />
-            <Sidebar />
-            <h1>DefaultLayout</h1>
-            <h5>Content</h5>
+            <Layout style={layoutStyle}>
+                <div className='body-page'>
+                    <Content>
+                        <Outlet />
+                    </Content>
+                </div>
+            </Layout>
         </>
     );
 }
