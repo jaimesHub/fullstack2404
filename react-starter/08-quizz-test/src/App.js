@@ -13,6 +13,7 @@ import CreateExam from "./pages/Admin/ManageExams/CreateExam";
 import ManageUsers from "./pages/Admin/ManageUsers";
 import ManageExams from "./pages/Admin/ManageExams";
 import ManageFeedback from "./pages/Admin/ManageFeedback";
+import Dashboard from "./pages/Admin/Dashboard";
 
 import DefaultLayout from './layouts/DefaultLayout';
 
@@ -32,6 +33,7 @@ function App() {
         </Route>
 
         <Route path='/admin' element={<Admin />}>
+          <Route index element={<Dashboard />} />
           <Route path='exams' element={<ManageExams />} />
           <Route path='exams/create' element={<CreateExam />} />
           <Route path='exams/update/:idExam' element={<CreateExam />} />

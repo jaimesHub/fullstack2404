@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
+import DefaultLayoutAdmin from '../../layouts/DefaultLayoutAdmin';
 
 const Admin = () => {
     return (
-        <>
-            <h1>Admin</h1>
+        <DefaultLayoutAdmin>
             <Outlet />
-        </>
+        </DefaultLayoutAdmin>
     );
 }
 
