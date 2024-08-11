@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@gmail.com",
+      "password": "12345678",
+      "username": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "email": "user1@gmail.com",
+      "password": "12345678",
+      "username": "user1",
+      "role": "user"
+    },
+    {
+      "id": "6e43",
+      "email": "user2@gmail.com",
+      "username": "user2",
+      "password": "12345678",
+      "role": "user"
+    },
+    {
+      "id": "0c6e",
+      "email": "user3@gmail.com",
+      "username": "user3",
+      "password": "12345678",
+      "role": "user"
+    },
+    {
+      "id": "3d8d",
+      "email": "user4@gmail.com",
+      "username": "user4",
+      "password": "12345678",
+      "role": "user"
+    }
+  ],
+  "history": [],
+  "feedbacks": [],
+  "exams": []
+}

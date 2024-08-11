@@ -1,34 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Avatar, Button, Checkbox, Dropdown, Form, Input, Modal } from 'antd';
 import { Link, NavLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import './navigation.css';
 import { useFormik } from 'formik';
-
-const items = [
-    {
-        key: '1',
-        label: <Link to='/profile'>Thông tin</Link>,
-    },
-    {
-        key: '2',
-        label: <Link to='/profile'>Đổi mật khẩu</Link>,
-    },
-    {
-        key: '3',
-        label: <div>Đăng xuất</div>,
-    },
-    {
-        type: 'divider',
-    },
-    {
-        key: '4',
-        label: <Link to='/admin'>Quản trị</Link>,
-    },
-];
+import { notification } from 'antd';
+import { useAuth } from '../../contexts/AuthContext';
 
 const FormLogin = ({ onRegister, formLogin }) => {
-    console.log('formLogin.errors: ', formLogin.errors);
+    // console.log('formLogin.errors: ', formLogin.errors);
 
     return (
         <Form name='basic' layout='vertical'>
@@ -42,7 +22,12 @@ const FormLogin = ({ onRegister, formLogin }) => {
                 validateStatus={formLogin.errors.email && 'error'}
                 help={formLogin.errors.email && formLogin.errors.email}
             >
-                <Input size='large' name='email' onChange={formLogin.handleChange} />
+                <Input
+                    size='large'
+                    name='email'
+                    onChange={formLogin.handleChange}
+                    value={formLogin.values.email}
+                />
             </Form.Item>
 
             <Form.Item
@@ -59,6 +44,7 @@ const FormLogin = ({ onRegister, formLogin }) => {
                     size='large'
                     name='password'
                     onChange={formLogin.handleChange}
+                    value={formLogin.values.password}
                 />
             </Form.Item>
 
@@ -76,7 +62,8 @@ const FormLogin = ({ onRegister, formLogin }) => {
 };
 
 const FormRegister = ({ formRegister }) => {
-    console.log('formRegister.errors: ', formRegister.errors);
+    // console.log('formRegister.errors: ', formRegister.errors);
+
     return (
         <Form name='basic' layout='vertical'>
             <Form.Item
@@ -89,7 +76,12 @@ const FormRegister = ({ formRegister }) => {
                 validateStatus={formRegister.errors.email && 'error'}
                 help={formRegister.errors.email && formRegister.errors.email}
             >
-                <Input size='large' name='email' onChange={formRegister.handleChange} />
+                <Input
+                    size='large'
+                    name='email'
+                    onChange={formRegister.handleChange}
+                    value={formRegister.values.email}
+                />
             </Form.Item>
             <Form.Item
                 label='Tên tài khoản'
@@ -105,6 +97,7 @@ const FormRegister = ({ formRegister }) => {
                     size='large'
                     name='username'
                     onChange={formRegister.handleChange}
+                    value={formRegister.values.username}
                 />
             </Form.Item>
             <Form.Item
@@ -121,6 +114,7 @@ const FormRegister = ({ formRegister }) => {
                     size='large'
                     name='password'
                     onChange={formRegister.handleChange}
+                    value={formRegister.values.password}
                 />
             </Form.Item>
         </Form>
@@ -130,6 +124,33 @@ const FormRegister = ({ formRegister }) => {
 const Navigation = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [statusModal, setStatusModal] = useState('login');
+    const [listUser, setListUser] = useState([]);
+
+    const [api, contextHolder] = notification.useNotification();
+
+    const { isAuthenticated, login, logout, userCurrent } = useAuth();
+
+    const items = [
+        {
+            key: '1',
+            label: <Link to='/profile'>Thông tin</Link>,
+        },
+        {
+            key: '2',
+            label: <Link to='/profile'>Đổi mật khẩu</Link>,
+        },
+        {
+            key: '3',
+            label: <div onClick={logout}>Đăng xuất</div>,
+        },
+        {
+            type: 'divider',
+        },
+        userCurrent?.role === 'admin' && {
+            key: '4',
+            label: <Link to='/admin'>Quản trị</Link>,
+        },
+    ];
 
     const formLogin = useFormik({
         initialValues: {
@@ -146,9 +167,35 @@ const Navigation = () => {
                 .required('Chưa nhập mật khẩu!'),
         }),
         onSubmit: (values) => {
-            console.log(values);
+            // console.log(values);
+            let isLoginSuccess = false;
+            let userLogin = null;
 
-            setIsModalOpen(false);
+            for (let user of listUser) {
+                if (user.email === values.email && user.password === values.password) {
+                    isLoginSuccess = true;
+
+                    userLogin = user;
+                }
+            }
+
+            if (isLoginSuccess) {
+                // success
+                api.success({
+                    message: 'Đăng nhập thành công',
+                    description: 'Đăng nhập thành công'
+                });
+
+                login(userLogin);
+
+                setIsModalOpen(false);
+            } else {
+                // fail
+                api.error({
+                    message: 'Đăng nhập không thành công',
+                    description: 'Đăng nhập không thành công'
+                })
+            }
         },
     });
 
@@ -171,9 +218,49 @@ const Navigation = () => {
                 .max(18, 'Mật khẩu không được quá 18 kí tự!')
                 .required('Chưa nhập mật khẩu'),
         }),
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             console.log(values);
-            setIsModalOpen(false);
+            let isExistEmail = false;
+            for (let user of listUser) {
+                if (user.email === values.email) {
+                    isExistEmail = true;
+                }
+            }
+
+            if (isExistEmail) {
+                // notification: dang ky fail
+                api.error({
+                    message: 'Đăng ký thất bại',
+                    description: 'Email đã tồn tại'
+                });
+            } else {
+                const newUser = { ...values, role: 'user' };
+
+                try {
+                    const response = await fetch('http://localhost:3001/users', {
+                        method: 'POST',
+                        body: JSON.stringify(newUser),
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+
+                    api.success({
+                        message: 'Đăng ký thành công',
+                    });
+
+                    setListUser([...listUser, newUser]);
+                    setIsModalOpen(false);
+
+                    login(newUser);
+                } catch (e) {
+                    api.error({
+                        message: 'Đăng ký thất bại',
+                        description: 'Email đã tồn tại!',
+                    });
+                }
+            }
+
         },
     });
 
@@ -207,8 +294,30 @@ const Navigation = () => {
         handleOpenModal();
     };
 
+    const getListUser = async () => {
+        const response = await fetch('http://localhost:3001/users');
+        const users = await response.json();
+
+        // console.log(users);
+
+        setListUser(users);
+    }
+
+    useEffect(() => {
+        getListUser();
+    }, []); // calling once time
+
+    useEffect(() => {
+        if (isModalOpen === false) {
+            console.log('>>> Đóng modal');
+            formLogin.resetForm();
+            formRegister.resetForm();
+        }
+    }, [isModalOpen]);
+
     return (
         <>
+            {contextHolder}
             <nav className='nav-app'>
                 <div className='wrapper'>
                     <div className='logo'>
@@ -251,9 +360,11 @@ const Navigation = () => {
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <NavLink to='/transcript'>Bảng điểm</NavLink>
-                        </li>
+                        {isAuthenticated && (
+                            <li>
+                                <NavLink to='/transcript'>Bảng điểm</NavLink>
+                            </li>
+                        )}
                         <li>
                             <NavLink to='/contact'>Liên hệ</NavLink>
                         </li>
@@ -263,20 +374,29 @@ const Navigation = () => {
                     </label>
 
                     <div className='profile'>
-                        {/* Chưa đăng nhập */}
-                        <Button style={{ margin: '0px 8px' }} onClick={handleRegister}>
-                            Đăng ký
-                        </Button>
-                        <Button style={{ margin: '0px 8px' }} onClick={handleLogin}>
-                            Đăng nhập
-                        </Button>
-
-                        {/* Đã đăng nhập */}
-                        <Dropdown menu={{ items }} placement='top'>
-                            <Avatar size='large' style={{ width: '55px', height: '55px' }}>
-                                James
-                            </Avatar>
-                        </Dropdown>
+                        {isAuthenticated ? (
+                            <>
+                                {/* Đã đăng nhập */}
+                                <Dropdown menu={{ items }} placement='top'>
+                                    <Avatar
+                                        size='large'
+                                        style={{ width: '55px', height: '55px' }}
+                                    >
+                                        James
+                                    </Avatar>
+                                </Dropdown>
+                            </>
+                        ) : (
+                            <>
+                                {/* Chưa đăng nhập */}
+                                <Button style={{ margin: '0px 8px' }} onClick={handleRegister}>
+                                    Đăng ký
+                                </Button>
+                                <Button style={{ margin: '0px 8px' }} onClick={handleLogin}>
+                                    Đăng nhập
+                                </Button>
+                            </>
+                        )}
                     </div>
                 </div>
             </nav>

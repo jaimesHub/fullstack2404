@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import Home from "./pages/Home";
@@ -16,39 +16,64 @@ import ManageFeedback from "./pages/Admin/ManageFeedback";
 import Dashboard from "./pages/Admin/Dashboard";
 
 import DefaultLayout from './layouts/DefaultLayout';
+import { useContext } from 'react';
 
-function App() {
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+
+const PrivateRoute = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+
+  return isAuthenticated ? children : <Navigate to='/' />;
+};
+
+
+const App = () => {
   return (
-    <>
-      {/* define routes */}
-      <Routes>
-        <Route path="/" element={<DefaultLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="list-exams" element={<ListExams />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path='/detail/:idExam' element={<DetailExam />} />
-          <Route path='/transcript' element={<Transcript />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/change-password' element={<ChangePassword />} />
-        </Route>
-
-        <Route path='/admin' element={<Admin />}>
-          <Route index element={<Dashboard />} />
-          <Route path='exams' element={<ManageExams />} />
-          <Route path='exams/create' element={<CreateExam />} />
-          <Route path='exams/update/:idExam' element={<CreateExam />} />
-          <Route path='users' element={<ManageUsers />} />
-          <Route path='feedback' element={<ManageFeedback />} />
-        </Route>
-      </Routes>
-
-      {/* <div className="App">
-        <div className='App-header'>
-          <h1>08 - Mini Project - Quizz Test</h1>
-        </div>
-      </div> */}
-    </>
+    <div>
+      <AuthProvider>
+        <Routes>
+          <Route path='/' element={<DefaultLayout />}>
+            <Route path='' element={<Home />} />
+            <Route path='list-exams' element={<ListExams />} />
+            <Route path='contact' element={<Contact />} />
+            <Route path='detail/:idExam' element={<DetailExam />} />
+            <Route
+              path='transcript'
+              element={
+                <PrivateRoute>
+                  <Transcript />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='profile'
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='change-password'
+              element={
+                <PrivateRoute>
+                  <ChangePassword />
+                </PrivateRoute>
+              }
+            />
+          </Route>
+          <Route path='/admin' element={<Admin />}>
+            <Route index element={<Dashboard />} />
+            <Route path='exams' element={<ManageExams />} />
+            <Route path='exams/create' element={<CreateExam />} />
+            <Route path='exams/update/:idExam' element={<CreateExam />} />
+            <Route path='users' element={<ManageUsers />} />
+            <Route path='feedback' element={<ManageFeedback />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
+    </div>
   );
-}
+};
 
 export default App;
