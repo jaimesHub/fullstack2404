@@ -38,5 +38,66 @@
   ],
   "history": [],
   "feedbacks": [],
-  "exams": []
+  "exams": [
+    {
+      "id": "77ae",
+      "title": "Html basic",
+      "time": "120",
+      "subject": "html",
+      "level": "basic",
+      "questions": [
+        {
+          "question": "HTML là gì ?",
+          "answers": [
+            "đáp án A",
+            "đáp án B",
+            "đáp án C",
+            "đáp án D"
+          ],
+          "answer_correct": "C"
+        },
+        {
+          "question": "Tag a là gì ?",
+          "answers": [
+            "Đáp án A2",
+            "Đáp án B2",
+            "Đáp án C2",
+            "Đáp án D2"
+          ],
+          "answer_correct": "B"
+        }
+      ],
+      "highest_point": null
+    },
+    {
+      "id": "380c",
+      "title": "CSS basic",
+      "time": "150",
+      "subject": "css",
+      "level": "medium",
+      "questions": [
+        {
+          "question": "CSS là gì ?",
+          "answers": [
+            "Đáp án A",
+            "Đáp án B",
+            "Đáp án C",
+            "Đáp án D"
+          ],
+          "answer_correct": "A"
+        },
+        {
+          "question": "CSS làm được gì ? ",
+          "answers": [
+            "Đáp án A2",
+            "Đáp án b2",
+            "Đáp án c2",
+            "Đáp án d2"
+          ],
+          "answer_correct": "C"
+        }
+      ],
+      "highest_point": null
+    }
+  ]
 }

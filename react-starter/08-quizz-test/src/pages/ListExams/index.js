@@ -15,43 +15,81 @@ import {
     Select,
     Skeleton,
 } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const ListExams = () => {
-    const listExam = [
-        {
-            title: 'Đề thi 1',
-            time: '45',
-            questions: [
-                {
-                    question: 'Câu hỏi 1',
-                    answer: {
-                        A: 'Đáp án A',
-                        B: 'Đáp án B',
-                        C: 'Đáp án C',
-                        D: 'Đáp án D',
-                    },
-                    answer_correct: [1],
-                },
-            ],
-        },
-        {
-            title: 'Đề thi 1',
-            time: '45',
-            questions: [
-                {
-                    question: 'Câu hỏi 1',
-                    answer: {
-                        A: 'Đáp án A',
-                        B: 'Đáp án B',
-                        C: 'Đáp án C',
-                        D: 'Đáp án D',
-                    },
-                    answer_correct: [1],
-                },
-            ],
-        },
-    ];
+    const [searchParms, setSearchParms] = useSearchParams();
+    const subjectFilter = searchParms.get('subject');
+
+    const titleSubject = {
+        html: 'HTML',
+        css: 'CSS',
+        javascript: 'JavaScript',
+        reactjs: 'ReactJS',
+        nodejs: 'NodeJS',
+    };
+
+    const titleLevel = {
+        basic: 'Cơ bản',
+        medium: 'Trung bình',
+        advanced: 'Nâng cao',
+    };
+
+    const [listExam, setListExam] = useState([]);
+    // const listExam = [
+    //     {
+    //         title: 'Đề thi 1',
+    //         time: '45',
+    //         questions: [
+    //             {
+    //                 question: 'Câu hỏi 1',
+    //                 answer: {
+    //                     A: 'Đáp án A',
+    //                     B: 'Đáp án B',
+    //                     C: 'Đáp án C',
+    //                     D: 'Đáp án D',
+    //                 },
+    //                 answer_correct: [1],
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         title: 'Đề thi 1',
+    //         time: '45',
+    //         questions: [
+    //             {
+    //                 question: 'Câu hỏi 1',
+    //                 answer: {
+    //                     A: 'Đáp án A',
+    //                     B: 'Đáp án B',
+    //                     C: 'Đáp án C',
+    //                     D: 'Đáp án D',
+    //                 },
+    //                 answer_correct: [1],
+    //             },
+    //         ],
+    //     },
+    // ];
+
+    const getListExam = async (subject) => {
+        let response;
+
+        if (subject === 'all') {
+            response = await fetch(`http://localhost:3001/exams`);
+        } else {
+            response = await fetch(
+                `http://localhost:3001/exams?subject=${subject}`
+            );
+        }
+        const exams = await response.json();
+
+        setListExam(exams);
+    };
+
+    useEffect(() => {
+        getListExam(subjectFilter);
+    }, [subjectFilter]);
 
     return (
         <>
@@ -62,7 +100,7 @@ const ListExams = () => {
                     justifyContent: 'space-between',
                 }}
             >
-                <h1>Đề thi HTML</h1>
+                <h1>Đề thi {titleSubject[subjectFilter]}</h1>
 
                 <Input
                     prefix={<SearchOutlined />}
@@ -72,7 +110,7 @@ const ListExams = () => {
             <Card style={{ marginTop: '32px' }}>
                 <div style={{ position: 'relative' }}>
                     <Divider orientation='left' style={{ margin: '0px' }}>
-                        HTML
+                        {titleSubject[subjectFilter]}
                     </Divider>
                     <Select
                         defaultValue='basic'
@@ -113,21 +151,27 @@ const ListExams = () => {
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
                                         <div>
                                             <QuestionCircleOutlined />
-                                            <span style={{ marginLeft: '4px' }}>50 câu</span>
+                                            <span style={{ marginLeft: '4px' }}>
+                                                {exam?.questions?.length} câu
+                                            </span>
                                         </div>
                                         <div style={{ marginLeft: '12px' }}>
                                             <ClockCircleOutlined />
-                                            <span style={{ marginLeft: '4px' }}>40 phút</span>
+                                            <span style={{ marginLeft: '4px' }}>
+                                                {exam?.time} phút
+                                            </span>
                                         </div>
                                         <div style={{ marginLeft: '12px' }}>
                                             <StarOutlined />
                                             <span style={{ marginLeft: '4px' }}>
-                                                Điểm cao nhất: 9
+                                                Điểm cao nhất {exam?.highest_point ?? 'Chưa có'}
                                             </span>
                                         </div>
                                         <div style={{ marginLeft: '12px' }}>
                                             <StockOutlined />
-                                            <span style={{ marginLeft: '4px' }}>Mức độ: cơ bản</span>
+                                            <span style={{ marginLeft: '4px' }}>
+                                                Mức độ: {titleLevel[exam?.level] ?? 'Chưa xác định'}
+                                            </span>
                                         </div>
                                     </div>
                                 }
