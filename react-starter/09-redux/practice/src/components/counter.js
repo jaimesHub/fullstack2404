@@ -6,11 +6,11 @@ const Counter = () => {
     const dispatch = useDispatch();
 
     const handleIncrement = () => {
-        dispatch(increment());
+        dispatch(increment(5));
     }
 
     const handleDecrement = () => {
-        dispatch(decrement());
+        dispatch(decrement(5));
     }
 
     return (
