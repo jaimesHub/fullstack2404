@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+-Đề tài: Trang web thi thử
+-Route (tuyến đường):
+	*Chưa đăng nhập cũng có thể truy cập được
+		+Trang chủ 
+			=> path: '/'
+		+Đăng nhập 
+			=> path: '/login'
+		+Đăng ký 
+			=> path: '/register'
+		+Danh sách các đề thi theo các môn
+		+Danh sách các đề thi theo các môn và theo các học phần
+			=> path: '/list-exam'
+		+Liên hệ
+			=> path: '/contact'
+		+Trang thi (xem)
+			=> path: '/detail/:idDeThi'
+	*Đã đăng nhập mới có thể truy cập được
+		+Bảng điểm
+			=> path: '/transcript'
+		+Trang cá nhân
+			=> path: '/profile'
+		+Đổi mật khẩu
+			=> path: '/change-password'
+		+Trang thi (có thể làm được)
+			=> path: '/detail/:idDeThi'
+	*Trang admin
+		=>path: '/admin'
+		+Quản lý đề thi (thêm, sửa, xóa đề thi)
+			Xem toàn bộ danh sách đề thi: => path: '/admin/exams'
+			Thêm đề thi: => path: '/admin/exams/create'
+			Sửa đề thi: => path: '/admin/exams/update/:idDeThi'
+		+Quản lý user (thêm, xóa)
+			Xem toàn bộ danh sách user: => path: '/admin/users'
+		+Danh sách feedback
+			
+	*Đã đăng nhập thì không thể vào được
+		+Đăng nhập
+		+Đăng ký
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+-Các chức năng:
+	+Đăng nhập
+	+Đăng ký
+	+Đăng xuất
+	+Đổi mật khẩu
+	+Sửa thông tin
+	+Bảng điểm (show lịch sử các đề thi đã làm)
+	+Danh sách các đề thi (sort, filter, pagination)
+	+Thi thử 
+	+Liên hệ (gửi feedback)
+	+Comment
+	
 
-## Available Scripts
+Đăng nhập / Đăng ký
+	-Sử dụng json-server để làm backend
+Private route, phân quyền 
 
-In the project directory, you can run:
 
-### `npm start`
+//Demo
+{
+	"tên_collection": [
+		{},
+	],
+}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Ví dụ:
+{
+	users: [], //người dùng
+	history: [], //lịch sử các đề thi đã làm
+	feedbacks: [], //góp ý
+	exams: [], //các đề thi
+}
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+user: {
+	id:
+	email: 
+	password: 
+	username: 
+	role: admin/user
+}
 
-### `npm test`
+//Chưa có validate
+exams: {
+	name: //tên đề thi
+	time: //thời gian để hoàn thành đề thi
+	subject: //môn thi
+	level:  //mức độ
+	questions: [
+		{
+			question:
+			answers: ['Đáp án A', 'Đáp án B'],
+			answer_correct: 0
+		}
+	],
+	highest_point: null
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-Các chức năng cần bổ sung:
+	-Tạo private route cho vấn đề phân quyền 
+		Mô tả: những account có role là admin thì mới vào được phần /admin (quản trị)
+			   những account có role là user thì không vào được trang quản trị, khi cố tình vào đường dẫn /admin => tự động điều hướng về trang chủ
+	-Validate cho các input trong phần tạo đề thi, sử dụng formik và yup
+	-Validate các input trong phần đóng góp ý kiến (/contact) và ghép api, khi mà bấm vào button Gửi ý kiến => lưu vào file db.json
