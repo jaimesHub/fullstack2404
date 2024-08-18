@@ -1,5 +1,6 @@
 import './App.css';
 import Counter from './components/counter.component';
+import Data from './components/user.component';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <header className="App-header">
         <p>Redux toolkit</p>
         <Counter />
+        <Data />
       </header>
     </div>
   );
