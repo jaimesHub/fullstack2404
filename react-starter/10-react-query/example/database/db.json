@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@gmail.com",
+      "password": "12345678",
+      "username": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "email": "user1@gmail.com",
+      "password": "12345678",
+      "username": "user1",
+      "role": "user"
+    },
+    {
+      "id": "6e43",
+      "email": "user2@gmail.com",
+      "username": "user2",
+      "password": "12345678",
+      "role": "user"
+    },
+    {
+      "id": "0c6e",
+      "email": "user3@gmail.com",
+      "username": "user3",
+      "password": "12345678",
+      "role": "user"
+    },
+    {
+      "email": "test-react-query-3-edited@gmail.com",
+      "password": "12345678",
+      "username": "test-react-query-3-edited",
+      "role": "user",
+      "id": "3d8d"
+    },
+    {
+      "id": "7979",
+      "email": "test-react-query-2@gmail.com",
+      "password": "12345678",
+      "username": "test-react-query-2",
+      "role": "user"
+    },
+    {
+      "id": "33e3",
+      "email": "test-react-query-3@gmail.com",
+      "password": "12345678",
+      "username": "test-react-query-3",
+      "role": "user"
+    }
+  ]
+}
