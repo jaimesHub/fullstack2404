@@ -1,12 +1,16 @@
 import './App.css';
+import Users from './components/User';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <>
+      <div className="App">
         <h1>React Query</h1>
-      </header>
-    </div>
+      </div>
+      <Users />
+    </>
+
+
   );
 }
 
