@@ -1,4 +1,5 @@
 import './App.css';
+import Posts from './components/Post';
 import Users from './components/User';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
         <h1>React Query</h1>
       </div>
       <Users />
+      <Posts />
     </>
   );
 }
