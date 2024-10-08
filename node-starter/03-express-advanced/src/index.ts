@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import Joi from 'joi';
+import { body, validationResult } from 'express-validator';
 
 const app = express();
 const PORT = 3000;
@@ -27,26 +27,26 @@ interface RegisterRequest {
     password: string,
 }
 
-const schema = Joi.object({
-    userName: Joi.string().min(3).max(30).required(),
-    email: Joi.string().email().required(),
-    password: Joi.string().min(6).required(),
-});
+app.post('/register',
+    [
+        body('userName').notEmpty().withMessage('Username is required!'),
+        body('email').isEmail().withMessage('Invalid email format'),
+        body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
+    ],
+    (req: Request<{}, {}, RegisterRequest>, res: Response) => {
+        const errors = validationResult(req.body);
 
-app.post('/register', (req: Request<{}, {}, RegisterRequest>, res: Response) => {
-    const { error } = schema.validate(req.body);
+        if (!errors.isEmpty()) {
+            res.status(400).json({
+                errors: errors.array(),
+            });
+            return;
+        }
 
-    if (error) {
-        res.status(400).json({
-            error: error.details[0].message,
+        res.status(200).json({
+            message: "Validation successful!",
         });
-        return;
-    }
-
-    res.status(200).json({
-        message: "Validation successful!",
     });
-});
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
