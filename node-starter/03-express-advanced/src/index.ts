@@ -1,7 +1,4 @@
 import express, { Request, Response } from 'express';
-import Queue from 'bull';
-
-const emailQueue = new Queue('emailQueue');
 
 const app = express();
 const PORT = 3000;
@@ -12,18 +9,18 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Hello, Express with TypeScript!');
 });
 
-app.post('/send-email', (req: Request, res: Response) => {
-    const { email } = req.body;
+// app.post('/send-email', (req: Request, res: Response) => {
+//     const { email } = req.body;
 
-    emailQueue.add({ email });
+//     emailQueue.add({ email });
 
-    res.send("Job in queue");
-});
+//     res.send("Job in queue");
+// });
 
-emailQueue.process(async (job) => {
-    const { email } = job.data;
-    console.log(`Sending to email ${email}`)
-});
+// emailQueue.process(async (job) => {
+//     const { email } = job.data;
+//     console.log(`Sending to email ${email}`)
+// });
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
