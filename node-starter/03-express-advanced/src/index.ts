@@ -4,6 +4,7 @@ import { createBullBoard } from '@bull-board/api';
 import { BullAdapter } from '@bull-board/api/bullAdapter';
 import { body, validationResult } from 'express-validator';
 import { emailQueue } from './queues/emailQueue';
+import cron from 'node-cron';
 
 const app = express();
 const PORT = 3000;
@@ -42,6 +43,11 @@ app.post('/send-email', async (req: Request, res: Response) => {
     const { email } = req.body;
     emailQueue.add({ email });
     res.send('Email Job has been added to the queue!');
+});
+
+// CronJob để in ra thông báo mỗi 5 phút
+cron.schedule('*/5 * * * *', () => {
+    console.log('Running a task every 5 minutes');
 });
 
 interface RegisterRequest {
