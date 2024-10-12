@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
+import { emailQueue } from './queues/emailQueue';
 
 const app = express();
 const PORT = 3000;
@@ -19,6 +20,12 @@ app.post('/api/data', (req: Request, res: Response) => {
 app.post('/api/form', (req: Request, res: Response) => {
     console.log('>>> FORM data from client: ', req.body);
     res.send('Data received!');
+});
+
+app.post('/send-email', async (req: Request, res: Response) => {
+    const { email } = req.body;
+    emailQueue.add({ email });
+    res.send('Email Job has been added to the queue!');
 });
 
 interface RegisterRequest {
