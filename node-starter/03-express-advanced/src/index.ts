@@ -6,9 +6,21 @@ import { body, validationResult } from 'express-validator';
 import { emailQueue } from './queues/emailQueue';
 import cron from 'node-cron';
 import nodemailer from 'nodemailer';
+import rateLimit from 'express-rate-limit';
 
 const app = express();
 const PORT = 3000;
+
+// Tạo rate limit middleware
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // Theo dõi các yêu cầu trong 15 minutes
+    max: 5, // số lần request tối đa cho mỗi IP trong 15 phút
+    message: "Too many requests from this IP, please try again after 15 minutes",
+    headers: true, // Gửi thông tin về giới hạn trong response header
+});
+
+// Sử dụng rate limit middleware cho tất cả các request
+app.use(limiter);
 
 app.use(express.json()); // Kích hoạt middleware để xử lý JSON 
 app.use(express.urlencoded({ extended: true })); // Kích hoạt middleware để xử lý dữ liệu FORM
