@@ -1,8 +1,23 @@
 import express, { Request, Response } from 'express';
 import cookieParser from 'cookie-parser';
+import session from 'express-session';
+
+declare module 'express-session' {
+    interface SessionData {
+        user: { id: number; name: string };
+    }
+}
 
 const app = express();
 const PORT = 3000;
+
+// Sử dụng session
+app.use(session({
+    secret: 'secret-key', // khoá bí mật để mã hoá session
+    resave: false, // không lưu session sau mỗi request
+    saveUninitialized: true, // tạo session nếu có dữ liệu
+    cookie: { maxAge: 60000 }, // thời gian sống của session
+}));
 
 async function getDataFromDatabase() {
     return new Promise((resolve, reject) => {
@@ -76,6 +91,20 @@ app.post('/api/user', async (req: Request, res: Response) => {
     }
 });
 
+// Đăng nhập
+app.get('/login', (req: Request, res: Response) => {
+    req.session.user = { id: 1, name: 'admin' };
+    res.send('Logged in!');
+});
+
+// Lấy thông tin user từ session
+app.get('/profile', (req: Request, res: Response) => {
+    if (req.session.user) {
+        res.json(req.session.user);
+    } else {
+        res.status(401).json({ message: 'Unauthorized!' });
+    }
+});
 // Ví dụ sử dụng cookie
 app.use(cookieParser());
 
