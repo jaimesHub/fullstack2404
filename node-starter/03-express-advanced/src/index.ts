@@ -5,6 +5,7 @@ import { BullAdapter } from '@bull-board/api/bullAdapter';
 import { body, validationResult } from 'express-validator';
 import { emailQueue } from './queues/emailQueue';
 import cron from 'node-cron';
+import nodemailer from 'nodemailer';
 
 const app = express();
 const PORT = 3000;
@@ -39,10 +40,34 @@ app.post('/api/form', (req: Request, res: Response) => {
     res.send('Data received!');
 });
 
+// Tạo transporter với cấu hình gửi email
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'xxx@gmail.com',
+        pass: 'xxxx'
+    }
+});
+// Endpoint gửi email
 app.post('/send-email', async (req: Request, res: Response) => {
-    const { email } = req.body;
-    emailQueue.add({ email });
-    res.send('Email Job has been added to the queue!');
+    // const { email } = req.body;
+    // emailQueue.add({ email });
+    // res.send('Email Job has been added to the queue!');
+    const { email, subject, text } = req.body;
+
+    try {
+        const info = await transporter.sendMail({
+            from: 'xxxx@gmail.com',
+            to: email,
+            subject: subject,
+            text: text,
+            html: `<b>Hello ${email}</b>`
+        });
+        console.log('Email sent to: ', info.messageId);
+        res.status(200).send({ message: "Email sent successfully!" });
+    } catch (error) {
+        console.log('Error sending email: ', error);
+    }
 });
 
 // CronJob để in ra thông báo mỗi 5 phút
