@@ -14,10 +14,13 @@
   "license": "ISC",
   "description": "Handling errors, Exception Filters, Security, and Logging in Express.js",
   "dependencies": {
-    "express": "^4.21.1"
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
+    "@types/cookie-parser": "^1.4.7",
     "@types/express": "^5.0.0",
     "@types/node": "^22.7.5",
     "@typescript-eslint/eslint-plugin": "^8.8.1",

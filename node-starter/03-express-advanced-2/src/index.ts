@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 const PORT = 3000;
@@ -73,6 +74,25 @@ app.post('/api/user', async (req: Request, res: Response) => {
             res.status(500).json({ message: 'Internal Server Error!', detail: error.message });
         }
     }
+});
+
+// Ví dụ sử dụng cookie
+app.use(cookieParser());
+
+// Set cookie
+app.get('/set-cookie', (req: Request, res: Response) => {
+    res.cookie('username', 'JohnDoe', {
+        maxAge: 1000 * 60 * 15, // 15 minutes
+        httpOnly: true, // Chỉ cho phép đọc cookie từ phía server
+    });
+    res.send('Cookie is set!');
+});
+
+// Get cookie
+app.get('/get-cookie', (req: Request, res: Response) => {
+    console.log('>> Cookies: ', req.cookies);
+    const username = req.cookies['username'];
+    res.send(`Username: ${username}`);
 });
 
 app.listen(PORT, () => {
