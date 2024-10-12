@@ -1,4 +1,7 @@
 import express, { Request, Response } from 'express';
+import { ExpressAdapter } from '@bull-board/express';
+import { createBullBoard } from '@bull-board/api';
+import { BullAdapter } from '@bull-board/api/bullAdapter';
 import { body, validationResult } from 'express-validator';
 import { emailQueue } from './queues/emailQueue';
 
@@ -7,6 +10,19 @@ const PORT = 3000;
 
 app.use(express.json()); // Kích hoạt middleware để xử lý JSON 
 app.use(express.urlencoded({ extended: true })); // Kích hoạt middleware để xử lý dữ liệu FORM
+
+// Tạo bull board với Express Adapter
+const serverAdapter = new ExpressAdapter();
+serverAdapter.setBasePath('/admin/queues');
+
+// Tạo Bull Board và kết nối hàng đợi
+createBullBoard({
+    queues: [new BullAdapter(emailQueue)],
+    serverAdapter: serverAdapter,
+});
+
+// Tích hợp Bull Board vào Express
+app.use('/admin/queues', serverAdapter.getRouter());
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello, Express with TypeScript!');
