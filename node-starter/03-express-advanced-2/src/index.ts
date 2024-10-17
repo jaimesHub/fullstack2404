@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import winston from 'winston';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 
@@ -10,6 +11,26 @@ declare module 'express-session' {
 
 const app = express();
 const PORT = 3000;
+
+// Cấu hình Winston logger
+const logger = winston.createLogger({
+    level: 'info', // Mức độ logging mặc định
+    format: winston.format.combine(
+        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+        winston.format.json(), // Ghi log dưới dạng JSON
+    ),
+    transports: [
+        new winston.transports.Console(), // Ghi log ra console
+        new winston.transports.File({ filename: 'error.log', level: 'error' }), // Ghi log ra file error.log
+        new winston.transports.File({ filename: 'combined.log' }), // Ghi log ra file combined.log
+    ],
+});
+
+// middleware ghi log cho các request
+app.use((req: Request, res: Response, next) => {
+    logger.info(`Received request:: ${req.method} ${req.url}`);
+    next();
+});
 
 // Sử dụng session
 app.use(session({
@@ -62,9 +83,10 @@ app.get('/', (req: Request, res: Response) => {
 app.get('/api/data', async (req: Request, res: Response) => {
     try {
         const data = await getDataFromDatabase(); // Giả sử hàm này có thể gây lỗi
+        console.log('>>> data: ', data);
         res.json(data);
-    } catch (error) {
-        console.log('Error: ', error);
+    } catch (error: any) {
+        logger.error(`API call failed: ${error}`)
         res.status(500).json({ message: 'Internal Server Error!' });
     }
 });

@@ -1,0 +1,8 @@
+{"level":"info","message":"Received request:: GET /","timestamp":"2024-10-17 23:00:10"}
+{"level":"info","message":"Received request:: GET /","timestamp":"2024-10-17 23:00:28"}
+{"level":"info","message":"Received request:: GET /","timestamp":"2024-10-17 23:00:37"}
+{"level":"info","message":"Received request:: GET /api/data","timestamp":"2024-10-17 23:01:23"}
+{"level":"info","message":"Received request:: GET /api/data","timestamp":"2024-10-17 23:06:12"}
+{"level":"error","message":"API call failed: undefined","timestamp":"2024-10-17 23:06:15"}
+{"level":"info","message":"Received request:: GET /api/data","timestamp":"2024-10-17 23:08:01"}
+{"level":"error","message":"API call failed: Database error!","timestamp":"2024-10-17 23:08:04"}
