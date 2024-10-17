@@ -2,6 +2,9 @@ import express, { Request, Response } from 'express';
 import winston from 'winston';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 declare module 'express-session' {
     interface SessionData {
@@ -10,7 +13,7 @@ declare module 'express-session' {
 }
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3001;
 
 // Cấu hình Winston logger
 const logger = winston.createLogger({
