@@ -3,8 +3,12 @@ import winston from 'winston';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import dotenv from 'dotenv';
-
+import swaggerJsDoc, { Options } from 'swagger-jsdoc';
+import swaggerUI from 'swagger-ui-express';
 dotenv.config();
+
+import path from "path";
+import router from './routes';
 
 declare module 'express-session' {
     interface SessionData {
@@ -15,6 +19,21 @@ declare module 'express-session' {
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const swaggerOptions: Options = {
+    swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Express TypeScript API with Swagger',
+            version: '1.0.0',
+            description: 'API Documentation Example',
+        }
+    },
+    apis: [path.join(__dirname, "/routes/*.ts")], // Đường dẫn đến file chứa các API
+}
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+app.use('/api', router); // Sử dụng router
 // Cấu hình Winston logger
 const logger = winston.createLogger({
     level: 'info', // Mức độ logging mặc định
@@ -151,4 +170,5 @@ app.get('/get-cookie', (req: Request, res: Response) => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Swagger docs available at http://localhost:${PORT}/api-docs`);
 });

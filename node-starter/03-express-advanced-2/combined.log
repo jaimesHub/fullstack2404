@@ -6,3 +6,7 @@
 {"level":"error","message":"API call failed: undefined","timestamp":"2024-10-17 23:06:15"}
 {"level":"info","message":"Received request:: GET /api/data","timestamp":"2024-10-17 23:08:01"}
 {"level":"error","message":"API call failed: Database error!","timestamp":"2024-10-17 23:08:04"}
+{"level":"info","message":"Received request:: GET /api/example","timestamp":"2024-10-19 17:14:32"}
+{"level":"info","message":"Received request:: GET /api/example","timestamp":"2024-10-19 17:15:35"}
+{"level":"info","message":"Received request:: GET /api/example","timestamp":"2024-10-19 17:15:42"}
+{"level":"info","message":"Received request:: GET /api/users","timestamp":"2024-10-19 17:15:55"}
