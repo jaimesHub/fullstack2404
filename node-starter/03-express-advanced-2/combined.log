@@ -10,3 +10,8 @@
 {"level":"info","message":"Received request:: GET /api/example","timestamp":"2024-10-19 17:15:35"}
 {"level":"info","message":"Received request:: GET /api/example","timestamp":"2024-10-19 17:15:42"}
 {"level":"info","message":"Received request:: GET /api/users","timestamp":"2024-10-19 17:15:55"}
+{"level":"info","message":"Received request:: GET /v1/get-version","timestamp":"2024-10-19 17:39:44"}
+{"level":"info","message":"Received request:: GET /v2/get-version","timestamp":"2024-10-19 17:40:14"}
+{"level":"info","message":"Received request:: GET /favicon.ico","timestamp":"2024-10-19 18:09:28"}
+{"level":"info","message":"Received request:: GET /v2/get-version","timestamp":"2024-10-19 18:09:47"}
+{"level":"info","message":"Received request:: GET /v2/get-version","timestamp":"2024-10-19 18:16:36"}

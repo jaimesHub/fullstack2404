@@ -5,6 +5,9 @@ import session from 'express-session';
 import dotenv from 'dotenv';
 import swaggerJsDoc, { Options } from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
+import statusMonitor from 'express-status-monitor';
+import morgan from 'morgan';
+import compression from 'compression';
 dotenv.config();
 
 import path from "path";
@@ -33,6 +36,16 @@ const swaggerOptions: Options = {
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
+// Giám sát trạng thái của server
+app.use(statusMonitor());
+
+// Ghi log các yêu cầu HTTP 
+app.use(morgan('combined'));
+
+// nén dữ liệu 
+app.use(compression());
+
 app.use('/api', router); // Sử dụng router
 // Cấu hình Winston logger
 const logger = winston.createLogger({
@@ -166,6 +179,16 @@ app.get('/get-cookie', (req: Request, res: Response) => {
     console.log('>> Cookies: ', req.cookies);
     const username = req.cookies['username'];
     res.send(`Username: ${username}`);
+});
+
+// version 1
+app.get('/v1/get-version', (req: Request, res: Response) => {
+    res.send('Version 1');
+});
+
+// version 2
+app.get('/v2/get-version', (req: Request, res: Response) => {
+    res.send('Version 2');
 });
 
 app.listen(PORT, () => {
