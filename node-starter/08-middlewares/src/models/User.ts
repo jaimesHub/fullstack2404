@@ -1,7 +1,7 @@
 import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 
 export class User {
-    id?: number;
+    id!: number;
 
     @IsNotEmpty({ message: 'Tên người dùng không được để trống' })
     username!: string;
