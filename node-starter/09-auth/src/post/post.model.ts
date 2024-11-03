@@ -5,7 +5,7 @@ interface Post extends Document {
     title: string;
     description: string;
     content: string;
-    author: User;
+    author: mongoose.Types.ObjectId;
 }
 
 const PostSchema: Schema = new Schema({
