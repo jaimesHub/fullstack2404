@@ -1,8 +1,6 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { authProtected, authToken, authLogin, authRegister } from './controllers/auth.controller';
-import { authenticateToken, authorization } from './middlewares/auth.middleware';
 
 import authRouter from './auth/auth.route';
 import postRouter from './post/post.route';
@@ -12,8 +10,6 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// app.post('/login', authLogin);
-// app.post('/register',authRegister )
 // app.get('/protected',authenticateToken,authorization, authProtected)
 // app.post('/token', authToken)
 

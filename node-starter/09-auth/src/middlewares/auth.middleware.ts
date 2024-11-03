@@ -1,9 +1,8 @@
 import dotenv from 'dotenv';
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { CustomRequest } from '../dtos/express.dto';
 import { User } from '../dtos/user.dto';
-import { users } from '../mock/users';
 import { Role } from '../dtos/role.dto';
 dotenv.config();
 
@@ -41,7 +40,7 @@ export const authenticateToken = (
 			}
 
 			req.user = {
-				id: user.id,
+				id: user._id,
 				role: user.role,
 				username: user.username,
 				email: user.email,
@@ -50,7 +49,7 @@ export const authenticateToken = (
 		});
 	} else {
 		res.status(401).json({
-			message: 'Bạn chưa đăng nhập',
+			message: 'You are not logged in',
 		});
 	}
 };
@@ -61,17 +60,17 @@ export const authorization = (
 	next: NextFunction
 ): any => {
 	const user: User = req.user as User;
-	console.log('user: ', user)
+	console.log('>>> user: ', user);
 	const roleUser = user.role;
 	// roleUser = viewer
 	if (!roleUser || !roles.includes(roleUser)) {
 		return res.status(403).json({
-			message: 'Bạn không đủ truy cập vào chức năng này',
+			message: 'You do not have permission to access',
 		});
 	}
 
 	return res.status(200).json({
-		message: `Quyền của bạn là: ${rolesApp[roleUser].permissions}`,
+		message: `Your permissions: ${rolesApp[roleUser].permissions}`,
 	});
 	// next();
 };
