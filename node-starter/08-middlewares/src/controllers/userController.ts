@@ -4,7 +4,7 @@ import userEvents from '../events/userEvents';
 import { User } from '../models/User';
 
 class UserController {
-    async register(req: Request, res: Response) {
+    async register(req: Request, res: Response): Promise<void> {
         const newUser: User = req.body;
 
         // Kiểm tra xem username hoặc email đã tồn tại chưa
@@ -12,7 +12,8 @@ class UserController {
             (u) => u.username === newUser.username || u.email === newUser.email,
         );
         if (existingUser) {
-            return res.status(400).send('Username or email already exists');
+            res.status(400).send('Username or email already exists');
+            return;
         }
 
         // Thêm người dùng mới vào database (thay thế bằng logic database thực tế)
@@ -23,6 +24,8 @@ class UserController {
         userEvents.emit('userRegistered', newUser);
 
         res.status(201).send('User registered successfully!');
+
+        return;
     }
 }
 
