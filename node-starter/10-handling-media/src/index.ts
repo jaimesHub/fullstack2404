@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import sharp from 'sharp';
 
 const app = express();
 const PORT = 3000;
@@ -51,8 +52,13 @@ const upload = multer({
 });
 
 // Route hiển thị form upload file
-app.post('/upload', upload.single('file'), (req: Request, res: Response) => {
+app.post('/upload', upload.single('file'), async (req: Request, res: Response) => {
     if (req.file) {
+        const outputFilePath = DIR_PATH + '/' + 'processed-' + req.file.filename.split('.')[0] + '.png';
+        await sharp(req.file.path).resize(200).toFormat('png').toFile(outputFilePath);
+
+        // fs.unlinkSync(req.file.path);
+
         // Xử lý file upload thành công
         res.status(200).json({
             message: 'File uploaded successfully',
