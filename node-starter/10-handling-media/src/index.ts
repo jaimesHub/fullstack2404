@@ -3,6 +3,7 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import sharp from 'sharp';
+import redisClient from './redisClient';
 
 const app = express();
 const PORT = 3000;
@@ -48,6 +49,54 @@ const upload = multer({
         }
 
         cb(new Error('Định dạng file không hợp lệ')); // Không cho phép upload
+    }
+});
+
+const memoryStorage = multer.memoryStorage(); // Lưu trữ file trong bộ nhớ
+const uploadMemoryStorage = multer({ storage: memoryStorage });
+
+// API lấy ảnh từ Redis
+app.get('/image/:name', async (req: Request, res: Response): Promise<any> => { // GET http://localhost:3000/image/
+    try {
+        const { name } = req.params;
+        console.log(">>> name: ", name);
+
+        // Tìm ảnh từ Redis
+        const cachedImage = await redisClient.get(name);
+
+        if (!cachedImage) {
+            return res.status(404).json({ message: 'Image not found!' });
+        }
+
+        // Trả về ảnh dưới dạng Base64
+        const imageBuffer = Buffer.from(cachedImage, 'base64');
+        res.setHeader('Content-Type', 'image/png'); // Đặt kiểu trả về là ảnh PNG
+        res.send(imageBuffer); // Trả về ảnh dưới dạng Buffer
+    } catch (error) {
+        console.error(">>> Error getting image from Redis: ", error);
+        res.status(500).json({ message: 'Internal server error!' });
+    }
+});
+
+// Route hiển thị form upload file (upload file lưu trữ trong bộ nhớ)
+app.post('/upload-memory', uploadMemoryStorage.single('file'), async (req: Request, res: Response): Promise<any> => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({
+                message: 'No file uploaded!'
+            });
+        }
+
+        const { buffer, originalname } = req.file;
+
+        // Chuyển đổi buffer thành chuỗi Base64 để lưu vào Redis
+        const imageBase64 = buffer.toString('base64');
+        await redisClient.set(originalname, imageBase64, 'EX', 60 * 60); // Cache 1 giờ
+
+        res.json({ message: 'File uploaded and cached successfully!' });
+    } catch (error) {
+        console.error(">>> Error uploading image: ", error);
+        res.status(500).json({ message: 'Internal server error!' });
     }
 });
 
