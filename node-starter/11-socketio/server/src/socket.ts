@@ -1,15 +1,20 @@
 import { Socket } from "socket.io";
 
 export const socketHandler = (socket: Socket) => {
-  console.log("connected user: ", socket.id);
-
-  socket.on("message", (message: string) => {
-    console.log("Received message: ", message);
-    // socket.emit("message", "Hello from server");
-    socket.broadcast.emit("message", message);
+  socket.on("joinRoom", (room: string) => {
+    socket.join(room);
+    console.log(`User ${socket.id} joined room ${room}`);
+    socket.to(room).emit("message", `${socket.id} has joined the room`);
   });
 
-  socket.on("disconnect", () => {
-    console.log("user disconnected: ", socket.id);
+  socket.on("leaveRoom", (room: string) => {
+    socket.leave(room);
+    console.log(`User ${socket.id} left room ${room}`);
+    socket.to(room).emit("message", `${socket.id} has left the room`);
+  });
+
+  socket.on("message", (room: string, message: string) => {
+    console.log(`Message from room ${room}: ${message}`);
+    socket.to(room).emit("message", `${socket.id}: ${message}`);
   });
 };

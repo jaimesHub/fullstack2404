@@ -9,14 +9,18 @@
 </head>
 
 <body>
-    <h1>Socket.io Client</h1>
+    <h1>Chat Room</h1>
+    <input id="room" type="text" placeholder="Room name..." />
+    <button id="join">Join room</button>
+    <button id="leave">Leave room</button>
+    <br />
     <input id="message" type="text" placeholder="Input message..." />
     <button id="send">Send</button>
-
+    <br />
     <ul id="messages"></ul>
 
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="./main.js"></script>
 </body>
 
 </html>

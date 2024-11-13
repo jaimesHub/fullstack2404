@@ -1,22 +1,58 @@
 const socket = io("http://localhost:3001");
 
-// Listen for messages from the server
-socket.on("message", (message) => {
+let currentRoom = "";
+
+const writeMessage = (message) => {
     const li = document.createElement("li");
     li.textContent = message;
     document.getElementById("messages").appendChild(li);
-});
+};
 
-// Send message to the server
-document.getElementById("send").onclick = () => {
-    const message = document.getElementById("message").value;
-
-    if (message) {
-        const li = document.createElement("li");
-        li.textContent = `You: ${message}`;
-        document.getElementById("messages").appendChild(li);
-
-        socket.emit("message", message);
-        document.getElementById("message").value = "";
+const leaveRoom = () => {
+    if (currentRoom) {
+        socket.emit("leaveRoom", currentRoom);
+        currentRoom = "";
+        const message = `You left room ${currentRoom}`;
+        writeMessage(message);
+        currentRoom = "";
     }
 };
+
+document.getElementById("leave").onclick = leaveRoom;
+
+socket.on("connect", () => {
+    console.log(`Connected to server w ID: ${socket.id}`);
+});
+
+socket.on("message", (message) => {
+    console.log(`Message from server: ${message}`);
+    writeMessage(message);
+});
+
+document.getElementById("join").onclick = () => {
+    const room = document.getElementById("room").value;
+    if (room) {
+        if (currentRoom) {
+            leaveRoom();
+        }
+
+        socket.emit("joinRoom", room);
+        currentRoom = room;
+        document.getElementById("messages").innerHTML = "";
+        const message = `You joined room ${room}`;
+        writeMessage(message);
+    }
+};
+
+document.getElementById("send").onclick = () => {
+    const value = document.getElementById("message").value;
+    if (value && currentRoom) {
+        socket.emit("message", currentRoom, value);
+        const message = `You: ${value}`;
+        writeMessage(message);
+    } else if (!currentRoom) {
+        const errorMessage = "You are not in a room";
+        alert(errorMessage);
+    }
+};
+
