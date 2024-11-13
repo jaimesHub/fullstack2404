@@ -6,7 +6,7 @@ export const socketHandler = (socket: Socket) => {
   socket.on("message", (message: string) => {
     console.log("Received message: ", message);
     // socket.emit("message", "Hello from server");
-    socket.broadcast.emit("message", "Hello from server");
+    socket.broadcast.emit("message", message);
   });
 
   socket.on("disconnect", () => {
