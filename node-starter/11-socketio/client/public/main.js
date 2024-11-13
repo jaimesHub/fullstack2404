@@ -10,6 +10,13 @@ socket.on("message", (message) => {
 // Send message to the server
 document.getElementById("send").onclick = () => {
     const message = document.getElementById("message").value;
-    socket.emit("message", message);
-    document.getElementById("message").value = "";
+
+    if (message) {
+        const li = document.createElement("li");
+        li.textContent = `You: ${message}`;
+        document.getElementById("messages").appendChild(li);
+
+        socket.emit("message", message);
+        document.getElementById("message").value = "";
+    }
 };
