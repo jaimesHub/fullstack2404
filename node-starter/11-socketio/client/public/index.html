@@ -9,16 +9,23 @@
 </head>
 
 <body>
-    <h1>Chat Room</h1>
-    <input id="room" type="text" placeholder="Room name..." />
-    <button id="join">Join room</button>
-    <button id="leave">Leave room</button>
-    <br />
-    <input id="message" type="text" placeholder="Input message..." />
-    <button id="send">Send</button>
-    <br />
-    <ul id="messages"></ul>
-
+    <h1>Chat Application</h1>
+    <div>
+        <input type="text" id="room" placeholder="Input Room name..." />
+        <button id="joinRoom">Join Room</button>
+    </div>
+    <div>
+        <input type="text" id="message" placeholder="Input message..." />
+        <button id="sendMessage">Send Message</button>
+    </div>
+    <div>
+        <p><strong>Messages:</strong></p>
+        <ul id="messages"></ul>
+    </div>
+    <div id="typingIndicator">
+        <p><strong>Typing:</strong></p>
+        <span id="typing"></span>
+    </div>
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
     <script type="module" src="./main.js"></script>
 </body>

@@ -1,58 +1,53 @@
 const socket = io("http://localhost:3001");
 
 let currentRoom = "";
+let typingTimeout = null;
 
-const writeMessage = (message) => {
-    const li = document.createElement("li");
-    li.textContent = message;
-    document.getElementById("messages").appendChild(li);
-};
+const roomInput = document.getElementById("room");
+const btnJoinRoom = document.getElementById("joinRoom");
+const messageInput = document.getElementById("message");
+const btnSendMessage = document.getElementById("sendMessage");
+const messageDiv = document.getElementById("messages");
+const typingIndicator = document.getElementById("typingIndicator");
+// const typingSpan = document.getElementById("typing");
 
-const leaveRoom = () => {
-    if (currentRoom) {
-        socket.emit("leaveRoom", currentRoom);
-        currentRoom = "";
-        const message = `You left room ${currentRoom}`;
-        writeMessage(message);
-        currentRoom = "";
+btnJoinRoom.onclick = () => {
+    const room = roomInput.value.trim();
+    if (room) {
+        currentRoom = room;
+        socket.emit("joinRoom", room);
+        messageDiv.innerHTML = `<li><strong>You joined room ${room}</strong></li>`;
     }
 };
 
-document.getElementById("leave").onclick = leaveRoom;
+btnSendMessage.onclick = () => {
+    const message = messageInput.value.trim();
+    if (message && currentRoom) {
+        socket.emit("message", currentRoom, message);
+        messageDiv.innerHTML += `<li><strong>You:${message}</strong></li>`;
+        messageInput.value = "";
+        socket.emit("stopTyping", currentRoom);
+    }
+};
 
-socket.on("connect", () => {
-    console.log(`Connected to server w ID: ${socket.id}`);
-});
+messageInput.oninput = () => {
+    if (currentRoom) {
+        socket.emit("typing", currentRoom);
+        clearTimeout(typingTimeout);
+        timeoutTyping = setTimeout(() => {
+            socket.emit("stopTyping", currentRoom);
+        }, 3000);
+    }
+};
 
 socket.on("message", (message) => {
-    console.log(`Message from server: ${message}`);
-    writeMessage(message);
+    messageDiv.innerHTML += `<li>${message}</li>`;
 });
 
-document.getElementById("join").onclick = () => {
-    const room = document.getElementById("room").value;
-    if (room) {
-        if (currentRoom) {
-            leaveRoom();
-        }
+socket.on("typing", (user) => {
+    typingIndicator.innerHTML = `<strong>${user}</strong>`;
+});
 
-        socket.emit("joinRoom", room);
-        currentRoom = room;
-        document.getElementById("messages").innerHTML = "";
-        const message = `You joined room ${room}`;
-        writeMessage(message);
-    }
-};
-
-document.getElementById("send").onclick = () => {
-    const value = document.getElementById("message").value;
-    if (value && currentRoom) {
-        socket.emit("message", currentRoom, value);
-        const message = `You: ${value}`;
-        writeMessage(message);
-    } else if (!currentRoom) {
-        const errorMessage = "You are not in a room";
-        alert(errorMessage);
-    }
-};
-
+socket.on("stopTyping", () => {
+    typingIndicator.innerHTML = "";
+});

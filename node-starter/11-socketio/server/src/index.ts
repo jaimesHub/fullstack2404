@@ -25,6 +25,16 @@ io.on("connection", (socket: Socket) => {
     socket.to(room).emit("message", `${socket.id} has left the room`);
   });
 
+  socket.on("typing", (room: string) => {
+    console.log(`User ${socket.id} is typing in room ${room}`);
+    socket.to(room).emit("typing", `${socket.id} is typing...`);
+  });
+
+  socket.on("stopTyping", (room: string) => {
+    console.log(`User ${socket.id} stopped typing in room ${room}`);
+    socket.to(room).emit("stopTyping", `${socket.id} stopped typing!`);
+  });
+
   socket.on("message", (room: string, message: string) => {
     console.log(`Message from room ${room}: ${message}`);
     io.to(room).emit("message", `${socket.id}: ${message}`);
